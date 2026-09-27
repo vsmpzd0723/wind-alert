@@ -1,0 +1,11 @@
+{
+  "name": "Wind Alert",
+  "short_name": "Wind Alert",
+  "description": "Прогноз ветра для wingfoil в Крыму и России",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f8fc",
+  "theme_color": "#087cf5",
+  "orientation": "portrait",
+  "icons": []
+}
