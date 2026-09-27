@@ -2,162 +2,568 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <title>Wind Alert — Wingfoil Крым</title>
+  <title>Wind Alert — Wingfoil Crimea</title>
 
   <style>
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-                   "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(
-        180deg,
-        #dff5ff 0%,
-        #f5fbff 45%,
-        #edf5f8 100%
-      );
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
       color: #102a43;
+
+      background:
+        radial-gradient(
+          circle at 90% 0%,
+          rgba(0, 149, 255, 0.20),
+          transparent 35%
+        ),
+        linear-gradient(
+          180deg,
+          #dff5ff 0%,
+          #f4fbff 38%,
+          #eef5f8 100%
+        );
+
+      min-height: 100vh;
     }
 
     .app {
+      width: 100%;
       max-width: 620px;
+
       margin: 0 auto;
-      padding: 15px;
+
+      padding:
+        env(safe-area-inset-top)
+        15px
+        calc(95px + env(safe-area-inset-bottom))
+        15px;
     }
 
-    header {
-      text-align: center;
-      padding: 15px 10px 20px;
-    }
 
-    .logo {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 10px;
-      border-radius: 22px;
+    /* =========================
+       HEADER
+    ========================== */
+
+    .header {
+      padding: 18px 5px 22px;
 
       display: flex;
       align-items: center;
-      justify-content: center;
-
-      font-size: 38px;
-
-      background: linear-gradient(
-        135deg,
-        #008cff,
-        #0066ff
-      );
-
-      box-shadow: 0 10px 25px rgba(0, 120, 255, 0.25);
+      justify-content: space-between;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 30px;
-      font-weight: 800;
-    }
-
-    .subtitle {
-      margin-top: 4px;
-      color: #607d95;
-      font-size: 15px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.94);
-      border-radius: 22px;
-      padding: 18px;
-      margin-bottom: 15px;
-
-      box-shadow: 0 8px 25px rgba(40, 100, 130, 0.08);
-    }
-
-    .card-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    select {
-      width: 100%;
-      padding: 15px;
-
-      border: 1px solid #d7e7f0;
-      border-radius: 15px;
-
-      background: #f8fcff;
-
-      font-size: 16px;
-      color: #102a43;
-
-      outline: none;
-    }
-
-    .button {
-      display: block;
-      width: 100%;
-
-      margin-top: 12px;
-      padding: 15px;
-
-      border-radius: 15px;
-
-      text-align: center;
-      text-decoration: none;
-
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-
-      background: linear-gradient(
-        135deg,
-        #008cff,
-        #0066ff
-      );
-
-      box-shadow: 0 8px 18px rgba(0, 110, 255, 0.22);
-    }
-
-    .status {
+    .brand {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .status-icon {
-      width: 46px;
-      height: 46px;
+    .logo {
+      width: 54px;
+      height: 54px;
 
-      border-radius: 14px;
+      border-radius: 17px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      background: #e8f5ff;
+      font-size: 29px;
 
+      background:
+        linear-gradient(
+          145deg,
+          #00a8ff,
+          #0066ff
+        );
+
+      box-shadow:
+        0 10px 24px
+        rgba(0, 105, 255, 0.28);
+    }
+
+    .brand-name {
       font-size: 24px;
+      font-weight: 850;
+      letter-spacing: -0.7px;
     }
 
-    .status-title {
+    .brand-subtitle {
+      margin-top: 2px;
+
+      font-size: 12px;
+
+      color: #668197;
+    }
+
+    .live-dot {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      padding: 8px 11px;
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,0.75);
+
+      font-size: 11px;
       font-weight: 700;
-      font-size: 16px;
+
+      color: #557086;
+
+      box-shadow:
+        0 5px 15px rgba(40, 100, 130, 0.06);
     }
 
-    .status-text {
-      margin-top: 3px;
-      font-size: 13px;
+    .dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #22c55e;
+
+      box-shadow:
+        0 0 0 4px rgba(34,197,94,0.12);
+    }
+
+
+    /* =========================
+       SECTION
+    ========================== */
+
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-label {
+      margin: 0 0 9px 5px;
+
+      font-size: 12px;
+      font-weight: 750;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.7px;
+
       color: #71879a;
     }
 
-    .forecast-card {
-      padding: 10px;
+
+    /* =========================
+       SPOT SELECT
+    ========================== */
+
+    .spot-card {
+      position: relative;
+
+      padding: 17px;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.98),
+          rgba(244,251,255,0.94)
+        );
+
+      border: 1px solid
+        rgba(255,255,255,0.9);
+
+      box-shadow:
+        0 12px 30px
+        rgba(40, 100, 130, 0.09);
+    }
+
+    .spot-top {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 12px;
+    }
+
+    .spot-icon {
+      width: 46px;
+      height: 46px;
+
+      flex-shrink: 0;
+
+      border-radius: 15px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #e7f6ff;
+
+      font-size: 23px;
+    }
+
+    .spot-label {
+      font-size: 11px;
+
+      color: #7a90a1;
+
+      margin-bottom: 2px;
+    }
+
+    .spot-name {
+      font-size: 17px;
+
+      font-weight: 800;
+
+      color: #173b55;
+    }
+
+    select {
+      width: 100%;
+
+      appearance: none;
+
+      -webkit-appearance: none;
+
+      padding: 15px 44px 15px 15px;
+
+      border: 1px solid #d8e8f1;
+
+      border-radius: 16px;
+
+      background:
+        #f8fcff
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%235e7890' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+        no-repeat
+        right 14px center;
+
+      color: #173b55;
+
+      font-size: 15px;
+
+      font-weight: 650;
+
+      outline: none;
+    }
+
+    select:focus {
+      border-color: #69bfff;
+    }
+
+
+    /* =========================
+       CONDITIONS
+    ========================== */
+
+    .conditions {
+      position: relative;
+
       overflow: hidden;
+
+      padding: 20px;
+
+      border-radius: 26px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          145deg,
+          #087dca 0%,
+          #0064d8 55%,
+          #0849a8 100%
+        );
+
+      box-shadow:
+        0 16px 35px
+        rgba(0, 91, 190, 0.25);
+    }
+
+    .conditions::before {
+      content: "";
+
+      position: absolute;
+
+      width: 190px;
+      height: 190px;
+
+      right: -65px;
+      top: -75px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,0.08);
+    }
+
+    .conditions::after {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      left: -65px;
+      bottom: -70px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,0.05);
+    }
+
+    .conditions-content {
+      position: relative;
+
+      z-index: 1;
+    }
+
+    .conditions-head {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+    }
+
+    .conditions-title {
+      font-size: 13px;
+
+      opacity: 0.78;
+
+      margin-bottom: 5px;
+    }
+
+    .conditions-spot {
+      font-size: 20px;
+
+      font-weight: 800;
+
+      letter-spacing: -0.3px;
+    }
+
+    .wing-badge {
+      padding: 7px 10px;
+
+      border-radius: 20px;
+
+      background:
+        rgba(255,255,255,0.13);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+      font-size: 10px;
+
+      font-weight: 750;
+    }
+
+    .main-wind {
+      display: flex;
+
+      align-items: baseline;
+
+      gap: 7px;
+
+      margin-top: 20px;
+    }
+
+    .wind-number {
+      font-size: 53px;
+
+      line-height: 1;
+
+      font-weight: 850;
+
+      letter-spacing: -2px;
+    }
+
+    .wind-unit {
+      font-size: 17px;
+
+      opacity: 0.75;
+    }
+
+    .wind-placeholder {
+      opacity: 0.85;
+    }
+
+    .wind-details {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 10px;
+
+      margin-top: 18px;
+    }
+
+    .wind-detail {
+      padding: 11px 12px;
+
+      border-radius: 15px;
+
+      background:
+        rgba(255,255,255,0.10);
+    }
+
+    .wind-detail-label {
+      font-size: 10px;
+
+      opacity: 0.65;
+
+      margin-bottom: 4px;
+    }
+
+    .wind-detail-value {
+      font-size: 15px;
+
+      font-weight: 750;
+    }
+
+
+    /* =========================
+       WINGFOIL SCALE
+    ========================== */
+
+    .scale-card {
+      padding: 18px;
+
+      border-radius: 23px;
+
+      background:
+        rgba(255,255,255,0.94);
+
+      box-shadow:
+        0 10px 26px
+        rgba(40, 100, 130, 0.07);
+    }
+
+    .scale-header {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 14px;
+    }
+
+    .scale-title {
+      font-size: 15px;
+
+      font-weight: 800;
+    }
+
+    .scale-subtitle {
+      font-size: 11px;
+
+      color: #8296a5;
+    }
+
+    .scale {
+      display: flex;
+
+      height: 12px;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      gap: 3px;
+    }
+
+    .scale-segment {
+      flex: 1;
+
+      border-radius: 20px;
+    }
+
+    .weak {
+      background: #7dc8ff;
+    }
+
+    .good {
+      background: #49d98a;
+    }
+
+    .strong {
+      background: #ffb14a;
+    }
+
+    .scale-labels {
+      display: flex;
+
+      justify-content: space-between;
+
+      margin-top: 8px;
+
+      font-size: 10px;
+
+      color: #7890a2;
+    }
+
+
+    /* =========================
+       WINDY APP
+    ========================== */
+
+    .forecast-wrapper {
+      padding: 12px;
+
+      border-radius: 26px;
+
+      background:
+        rgba(255,255,255,0.94);
+
+      box-shadow:
+        0 10px 28px
+        rgba(40, 100, 130, 0.08);
+
+      overflow: hidden;
+    }
+
+    .forecast-heading {
+      padding: 5px 7px 12px;
+    }
+
+    .forecast-title {
+      font-size: 17px;
+
+      font-weight: 800;
+    }
+
+    .forecast-subtitle {
+      margin-top: 3px;
+
+      font-size: 11px;
+
+      color: #7a90a1;
     }
 
     .forecast {
@@ -168,235 +574,766 @@
       display: none;
     }
 
-    .info {
-      font-size: 13px;
-      line-height: 1.5;
+
+    /* =========================
+       WINDY BUTTON
+    ========================== */
+
+    .open-button {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      width: 100%;
+
+      margin-top: 13px;
+
+      padding: 15px;
+
+      border-radius: 17px;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: 750;
+
+      background:
+        linear-gradient(
+          135deg,
+          #008cff,
+          #0066ff
+        );
+
+      box-shadow:
+        0 9px 20px
+        rgba(0, 110, 255, 0.20);
+    }
+
+    .open-button:active {
+      transform: scale(0.98);
+    }
+
+
+    /* =========================
+       INFO
+    ========================== */
+
+    .info-card {
+      padding: 17px;
+
+      border-radius: 23px;
+
+      background:
+        rgba(255,255,255,0.82);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.9);
+    }
+
+    .info-title {
+      font-size: 14px;
+
+      font-weight: 800;
+
+      margin-bottom: 12px;
+    }
+
+    .info-row {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 7px 0;
+
+      font-size: 12px;
+
       color: #607d95;
     }
 
-    .info strong {
-      color: #29465d;
+    .info-dot {
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+
+      flex-shrink: 0;
     }
+
+
+    /* =========================
+       BOTTOM NAV
+    ========================== */
+
+    .bottom-nav {
+      position: fixed;
+
+      z-index: 50;
+
+      left: 50%;
+
+      bottom:
+        calc(
+          12px +
+          env(safe-area-inset-bottom)
+        );
+
+      transform: translateX(-50%);
+
+      width: calc(100% - 30px);
+
+      max-width: 590px;
+
+      height: 64px;
+
+      padding: 6px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      border-radius: 22px;
+
+      background:
+        rgba(255,255,255,0.90);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.9);
+
+      box-shadow:
+        0 12px 35px
+        rgba(20, 70, 100, 0.18);
+    }
+
+    .nav-item {
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 2px;
+
+      border-radius: 17px;
+
+      color: #7890a2;
+
+      font-size: 10px;
+
+      font-weight: 650;
+
+      cursor: pointer;
+
+      text-decoration: none;
+    }
+
+    .nav-icon {
+      font-size: 19px;
+    }
+
+    .nav-item.active {
+      color: #006fff;
+
+      background:
+        #eaf5ff;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
 
     footer {
       text-align: center;
-      padding: 10px 0 25px;
 
-      color: #7890a2;
-      font-size: 12px;
+      padding: 4px 0 15px;
+
+      color: #8aa0af;
+
+      font-size: 10px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 380px) {
+
+      .brand-name {
+        font-size: 21px;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+      }
+
+      .wind-number {
+        font-size: 47px;
+      }
+
+      .conditions-spot {
+        font-size: 18px;
+      }
+
     }
   </style>
 </head>
 
+
 <body>
+
 
 <div class="app">
 
-  <header>
 
-    <div class="logo">
-      🌬️
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="header">
+
+    <div class="brand">
+
+      <div class="logo">
+        🌬️
+      </div>
+
+      <div>
+
+        <div class="brand-name">
+          Wind Alert
+        </div>
+
+        <div class="brand-subtitle">
+          Wingfoil · Крым
+        </div>
+
+      </div>
+
     </div>
 
-    <h1>Wind Alert</h1>
 
-    <div class="subtitle">
-      Wingfoil · Крым
+    <div class="live-dot">
+
+      <span class="dot"></span>
+
+      Windy.app
+
     </div>
 
   </header>
 
 
-  <!-- ВЫБОР СПОТА -->
+  <!-- =========================
+       SPOT
+  ========================== -->
 
-  <div class="card">
+  <section
+    class="section"
+    id="spots"
+  >
 
-    <div class="card-title">
-      📍 Выбери спот
+    <div class="section-label">
+      Спот
     </div>
 
-    <select id="spotSelect">
 
-      <option value="206895">
-        Щёлкино · Татарка · Казантип
-      </option>
+    <div class="spot-card">
 
-      <option value="8746">
-        Оленевка
-      </option>
+      <div class="spot-top">
 
-      <option value="5329437">
-        Донузлав
-      </option>
+        <div class="spot-icon">
+          🌊
+        </div>
 
-      <option value="379119">
-        Межводное · Kitepleasure
-      </option>
+        <div>
 
-      <option value="561722">
-        Севастополь
-      </option>
+          <div class="spot-label">
+            Сейчас выбран
+          </div>
 
-    </select>
+          <div
+            class="spot-name"
+            id="selectedSpotSmall"
+          >
+            Щёлкино · Татарка · Казантип
+          </div>
 
+        </div>
 
-    <a
-      id="openForecast"
-      class="button"
-      href="https://windy.app/forecast2/spot/206895/"
-      target="_blank"
-    >
-      Открыть прогноз в Windy.app
-    </a>
-
-  </div>
-
-
-  <!-- ИНФОРМАЦИЯ -->
-
-  <div class="card">
-
-    <div class="status">
-
-      <div class="status-icon">
-        🌊
       </div>
 
-      <div>
 
-        <div class="status-title" id="selectedSpot">
+      <select id="spotSelect">
+
+        <option value="206895">
           Щёлкино · Татарка · Казантип
+        </option>
+
+        <option value="8746">
+          Оленевка
+        </option>
+
+        <option value="5329437">
+          Донузлав
+        </option>
+
+        <option value="379119">
+          Межводное · Kitepleasure
+        </option>
+
+        <option value="561722">
+          Севастополь
+        </option>
+
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONDITIONS
+  ========================== -->
+
+  <section
+    class="section"
+    id="wind"
+  >
+
+    <div class="section-label">
+      Условия
+    </div>
+
+
+    <div class="conditions">
+
+      <div class="conditions-content">
+
+
+        <div class="conditions-head">
+
+          <div>
+
+            <div class="conditions-title">
+              Ветер сейчас
+            </div>
+
+            <div
+              class="conditions-spot"
+              id="selectedSpot"
+            >
+              Щёлкино · Татарка · Казантип
+            </div>
+
+          </div>
+
+
+          <div class="wing-badge">
+            WINGFOIL
+          </div>
+
         </div>
 
-        <div class="status-text">
-          Актуальный прогноз Windy.app
+
+        <div class="main-wind">
+
+          <div
+            class="wind-number wind-placeholder"
+            id="windValue"
+          >
+            —
+          </div>
+
+          <div class="wind-unit">
+            м/с
+          </div>
+
+        </div>
+
+
+        <div class="wind-details">
+
+          <div class="wind-detail">
+
+            <div class="wind-detail-label">
+              ПОРЫВЫ
+            </div>
+
+            <div
+              class="wind-detail-value"
+              id="gustValue"
+            >
+              — м/с
+            </div>
+
+          </div>
+
+
+          <div class="wind-detail">
+
+            <div class="wind-detail-label">
+              НАПРАВЛЕНИЕ
+            </div>
+
+            <div
+              class="wind-detail-value"
+              id="directionValue"
+            >
+              —
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
     </div>
 
-  </div>
+  </section>
 
 
-  <!-- ПРОГНОЗЫ -->
+  <!-- =========================
+       WINGFOIL SCALE
+  ========================== -->
 
-  <div class="card forecast-card">
+  <section class="section">
+
+    <div class="section-label">
+      Ориентир для wingfoil
+    </div>
 
 
-    <!-- ЩЁЛКИНО -->
+    <div class="scale-card">
 
-    <div
-      id="forecast-206895"
-      class="forecast"
-    >
+      <div class="scale-header">
 
-      <div
-        data-windywidget="forecast"
-        data-thememode="white"
-        data-responsive="true"
-        data-spotid="206895"
-        data-appid="f703bd89da5575c8eed6c88aa5faed08">
+        <div class="scale-title">
+          Диапазон ветра
+        </div>
+
+        <div class="scale-subtitle">
+          wing ≤ 4.0 м
+        </div>
+
+      </div>
+
+
+      <div class="scale">
+
+        <div
+          class="scale-segment weak"
+          style="flex: 1;"
+        ></div>
+
+        <div
+          class="scale-segment good"
+          style="flex: 2;"
+        ></div>
+
+        <div
+          class="scale-segment strong"
+          style="flex: 1;"
+        ></div>
+
+      </div>
+
+
+      <div class="scale-labels">
+
+        <span>
+          4–5 слабый
+        </span>
+
+        <span>
+          5–7 рабочий
+        </span>
+
+        <span>
+          7+ сильный
+        </span>
+
       </div>
 
     </div>
 
+  </section>
 
-    <!-- ОЛЕНЕВКА -->
 
-    <div
-      id="forecast-8746"
-      class="forecast hidden"
-    >
+  <!-- =========================
+       FORECAST
+  ========================== -->
+
+  <section
+    class="section"
+    id="forecast"
+  >
+
+    <div class="section-label">
+      Прогноз
+    </div>
+
+
+    <div class="forecast-wrapper">
+
+      <div class="forecast-heading">
+
+        <div class="forecast-title">
+          Прогноз Windy.app
+        </div>
+
+        <div class="forecast-subtitle">
+          Подробный прогноз выбранного спота
+        </div>
+
+      </div>
+
+
+      <!-- ЩЁЛКИНО -->
 
       <div
-        data-windywidget="forecast"
-        data-thememode="white"
-        data-responsive="true"
-        data-spotid="8746"
-        data-appid="f703bd89da5575c8eed6c88aa5faed08">
+        id="forecast-206895"
+        class="forecast"
+      >
+
+        <div
+          data-windywidget="forecast"
+          data-thememode="white"
+          data-responsive="true"
+          data-spotid="206895"
+          data-appid="f703bd89da5575c8eed6c88aa5faed08">
+        </div>
+
+      </div>
+
+
+      <!-- ОЛЕНЕВКА -->
+
+      <div
+        id="forecast-8746"
+        class="forecast hidden"
+      >
+
+        <div
+          data-windywidget="forecast"
+          data-thememode="white"
+          data-responsive="true"
+          data-spotid="8746"
+          data-appid="f703bd89da5575c8eed6c88aa5faed08">
+        </div>
+
+      </div>
+
+
+      <!-- ДОНУЗЛАВ -->
+
+      <div
+        id="forecast-5329437"
+        class="forecast hidden"
+      >
+
+        <div
+          data-windywidget="forecast"
+          data-thememode="white"
+          data-responsive="true"
+          data-spotid="5329437"
+          data-appid="f703bd89da5575c8eed6c88aa5faed08">
+        </div>
+
+      </div>
+
+
+      <!-- МЕЖВОДНОЕ -->
+
+      <div
+        id="forecast-379119"
+        class="forecast hidden"
+      >
+
+        <div
+          data-windywidget="forecast"
+          data-thememode="white"
+          data-responsive="true"
+          data-spotid="379119"
+          data-appid="f703bd89da5575c8eed6c88aa5faed08">
+        </div>
+
+      </div>
+
+
+      <!-- СЕВАСТОПОЛЬ -->
+
+      <div
+        id="forecast-561722"
+        class="forecast hidden"
+      >
+
+        <div
+          data-windywidget="forecast"
+          data-thememode="white"
+          data-responsive="true"
+          data-spotid="561722"
+          data-appid="f703bd89da5575c8eed6c88aa5faed08">
+        </div>
+
+      </div>
+
+
+      <a
+        id="openForecast"
+        class="open-button"
+        href="https://windy.app/forecast2/spot/206895/"
+        target="_blank"
+      >
+        Открыть полный прогноз ↗
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       INFO
+  ========================== -->
+
+  <section class="section">
+
+    <div class="info-card">
+
+      <div class="info-title">
+        Как читать ветер
+      </div>
+
+
+      <div class="info-row">
+
+        <span
+          class="info-dot weak"
+        ></span>
+
+        <span>
+          <strong>4–5 м/с</strong> —
+          слабый ветер
+        </span>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span
+          class="info-dot good"
+        ></span>
+
+        <span>
+          <strong>5–7 м/с</strong> —
+          рабочий диапазон
+        </span>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span
+          class="info-dot strong"
+        ></span>
+
+        <span>
+          <strong>7+ м/с</strong> —
+          сильный ветер
+        </span>
+
       </div>
 
     </div>
 
-
-    <!-- ДОНУЗЛАВ -->
-
-    <div
-      id="forecast-5329437"
-      class="forecast hidden"
-    >
-
-      <div
-        data-windywidget="forecast"
-        data-thememode="white"
-        data-responsive="true"
-        data-spotid="5329437"
-        data-appid="f703bd89da5575c8eed6c88aa5faed08">
-      </div>
-
-    </div>
-
-
-    <!-- МЕЖВОДНОЕ -->
-
-    <div
-      id="forecast-379119"
-      class="forecast hidden"
-    >
-
-      <div
-        data-windywidget="forecast"
-        data-thememode="white"
-        data-responsive="true"
-        data-spotid="379119"
-        data-appid="f703bd89da5575c8eed6c88aa5faed08">
-      </div>
-
-    </div>
-
-
-    <!-- СЕВАСТОПОЛЬ -->
-
-    <div
-      id="forecast-561722"
-      class="forecast hidden"
-    >
-
-      <div
-        data-windywidget="forecast"
-        data-thememode="white"
-        data-responsive="true"
-        data-spotid="561722"
-        data-appid="f703bd89da5575c8eed6c88aa5faed08">
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ПОДСКАЗКА -->
-
-  <div class="card info">
-
-    <strong>Ориентир для wingfoil:</strong><br><br>
-
-    4–5 м/с — слабый ветер<br>
-    5–7 м/с — рабочие условия<br>
-    7+ м/с — сильный ветер
-
-  </div>
+  </section>
 
 
   <footer>
-    Wind Alert · прогноз Windy.app
+    Wind Alert · Wingfoil Crimea
   </footer>
+
 
 </div>
 
 
-<!-- WINDY.APP SCRIPT -->
+<!-- =========================
+     BOTTOM NAV
+========================== -->
+
+<nav class="bottom-nav">
+
+  <a
+    class="nav-item active"
+    href="#spots"
+  >
+
+    <span class="nav-icon">
+      📍
+    </span>
+
+    Споты
+
+  </a>
+
+
+  <a
+    class="nav-item"
+    href="#wind"
+  >
+
+    <span class="nav-icon">
+      🌬️
+    </span>
+
+    Ветер
+
+  </a>
+
+
+  <a
+    class="nav-item"
+    href="#forecast"
+  >
+
+    <span class="nav-icon">
+      📊
+    </span>
+
+    Прогноз
+
+  </a>
+
+</nav>
+
+
+<!-- WINDY.APP -->
 
 <script
   async
@@ -407,15 +1344,9 @@
 
 <script>
 
-  const select =
-    document.getElementById("spotSelect");
-
-  const button =
-    document.getElementById("openForecast");
-
-  const title =
-    document.getElementById("selectedSpot");
-
+  /* =========================
+     СПОТЫ
+  ========================== */
 
   const spots = {
 
@@ -447,9 +1378,39 @@
   };
 
 
+  /* =========================
+     ELEMENTS
+  ========================== */
+
+  const select =
+    document.getElementById(
+      "spotSelect"
+    );
+
+  const button =
+    document.getElementById(
+      "openForecast"
+    );
+
+  const title =
+    document.getElementById(
+      "selectedSpot"
+    );
+
+  const titleSmall =
+    document.getElementById(
+      "selectedSpotSmall"
+    );
+
+
+  /* =========================
+     SHOW SPOT
+  ========================== */
+
   function showSpot(spotId) {
 
-    /* Скрываем все прогнозы */
+
+    /* Hide all */
 
     document
       .querySelectorAll(".forecast")
@@ -460,7 +1421,7 @@
       });
 
 
-    /* Показываем выбранный */
+    /* Show selected */
 
     const selected =
       document.getElementById(
@@ -470,18 +1431,23 @@
 
     if (selected) {
 
-      selected.classList.remove("hidden");
+      selected.classList.remove(
+        "hidden"
+      );
 
     }
 
 
-    /* Меняем название */
+    /* Update titles */
 
     title.textContent =
       spots[spotId].name;
 
+    titleSmall.textContent =
+      spots[spotId].name;
 
-    /* Меняем кнопку */
+
+    /* Update button */
 
     button.href =
       spots[spotId].url;
@@ -489,19 +1455,80 @@
   }
 
 
+  /* =========================
+     CHANGE SPOT
+  ========================== */
+
   select.addEventListener(
     "change",
     function() {
 
-      showSpot(this.value);
+      showSpot(
+        this.value
+      );
+
+      /*
+        Плавно прокручиваем
+        к прогнозу.
+      */
+
+      setTimeout(function() {
+
+        document
+          .getElementById("forecast")
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+      }, 100);
 
     }
   );
 
 
-  /* Первый спот */
+  /* =========================
+     INITIAL
+  ========================== */
 
   showSpot("206895");
+
+
+  /* =========================
+     BOTTOM NAV
+  ========================== */
+
+  const navItems =
+    document.querySelectorAll(
+      ".nav-item"
+    );
+
+
+  navItems.forEach(function(item) {
+
+    item.addEventListener(
+      "click",
+      function() {
+
+        navItems.forEach(
+          function(nav) {
+
+            nav.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+        this.classList.add(
+          "active"
+        );
+
+      }
+    );
+
+  });
 
 </script>
 
