@@ -13,158 +13,170 @@
 
     body {
       margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
       background: #eef5f9;
-      font-family: Arial, sans-serif;
       color: #17324d;
     }
 
     .header {
       background: #0077b6;
       color: white;
+      padding: 22px 18px;
       text-align: center;
-      padding: 18px 10px;
     }
 
     .header h1 {
       margin: 0;
-      font-size: 26px;
+      font-size: 28px;
+      font-weight: 700;
     }
 
     .header p {
       margin: 7px 0 0;
       font-size: 14px;
+      opacity: 0.9;
     }
 
     .container {
-      max-width: 700px;
+      max-width: 600px;
       margin: auto;
-      padding: 15px;
+      padding: 18px 15px 30px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 5px 0 14px;
     }
 
     .spot {
       background: white;
-      border-radius: 15px;
+      border-radius: 16px;
+      margin-bottom: 12px;
       padding: 17px;
-      margin-bottom: 13px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 9px rgba(0,0,0,0.08);
     }
 
-    .spot h2 {
-      margin: 0 0 5px;
-      font-size: 20px;
+    .spot-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 5px;
     }
 
-    .spot p {
-      margin: 0;
+    .spot-location {
       color: #718596;
-      font-size: 14px;
+      font-size: 13px;
+      margin-bottom: 14px;
     }
 
     .button {
       display: block;
-      margin-top: 13px;
-      padding: 13px;
+      width: 100%;
+      padding: 13px 10px;
+      border-radius: 11px;
       background: #0077b6;
       color: white;
       text-decoration: none;
       text-align: center;
-      border-radius: 10px;
-      font-weight: bold;
+      font-size: 15px;
+      font-weight: 600;
     }
 
     .button:active {
-      background: #005f8f;
+      transform: scale(0.98);
     }
 
     .footer {
       text-align: center;
-      color: #789;
+      color: #8193a1;
       font-size: 12px;
-      padding: 15px;
+      padding: 10px 20px 25px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>🌬️ Wind Alert</h1>
-    <p>Крым · Wingfoil · Windy.app</p>
-  </div>
+  <header class="header">
+    <h1>🌬️ WIND ALERT</h1>
+    <p>Крым · Wingfoil</p>
+  </header>
 
-  <div class="container">
+  <main class="container">
+
+    <div class="title">Выбери спот</div>
 
     <div class="spot">
-      <h2>Щёлкино · Татарка · Казантип</h2>
-      <p>Азовское море</p>
+      <div class="spot-name">Щёлкино · Татарка · Казантип</div>
+      <div class="spot-location">Азовское море</div>
       <a class="button"
          href="https://windy.app/forecast2/spot/206895/"
          target="_blank">
-        Открыть прогноз Windy.app
+        🌬️ Открыть прогноз
       </a>
     </div>
 
     <div class="spot">
-      <h2>Оленевка</h2>
-      <p>Тарханкут · Чёрное море</p>
+      <div class="spot-name">Оленевка</div>
+      <div class="spot-location">Тарханкут · Чёрное море</div>
       <a class="button"
          href="https://windy.app/forecast2/spot/8746/"
          target="_blank">
-        Открыть прогноз Windy.app
+        🌬️ Открыть прогноз
       </a>
     </div>
 
     <div class="spot">
-      <h2>Донузлав</h2>
-      <p>Чёрное море</p>
+      <div class="spot-name">Донузлав</div>
+      <div class="spot-location">Чёрное море</div>
       <a class="button"
          href="https://windy.app/forecast2/spot/5329437/"
          target="_blank">
-        Открыть прогноз Windy.app
+        🌬️ Открыть прогноз
       </a>
     </div>
 
     <div class="spot">
-      <h2>Межводное · Kitepleasure</h2>
-      <p>Тарханкут · Чёрное море</p>
+      <div class="spot-name">Межводное · Kitepleasure</div>
+      <div class="spot-location">Тарханкут · Чёрное море</div>
       <a class="button"
          href="https://windy.app/forecast2/spot/379119/"
          target="_blank">
-        Открыть прогноз Windy.app
+        🌬️ Открыть прогноз
       </a>
     </div>
 
     <div class="spot">
-      <h2>Севастополь</h2>
-      <p>Чёрное море</p>
+      <div class="spot-name">Севастополь</div>
+      <div class="spot-location">Чёрное море</div>
       <a class="button"
          href="https://windy.app/forecast2/spot/561722/"
          target="_blank">
-        Открыть прогноз Windy.app
+        🌬️ Открыть прогноз
       </a>
     </div>
 
     <div class="spot">
-      <h2>Коктебель</h2>
-      <p>Юго-восточный Крым</p>
+      <div class="spot-name">Коктебель</div>
+      <div class="spot-location">Юго-восточный Крым</div>
       <a class="button"
          href="https://windy.app/forecast2/spot/813205/"
          target="_blank">
-        Открыть прогноз Windy.app
+        🌬️ Открыть прогноз
       </a>
     </div>
 
     <div class="spot">
-      <h2>Судак</h2>
-      <p>Юго-восточный Крым</p>
+      <div class="spot-name">Судак</div>
+      <div class="spot-location">Юго-восточный Крым</div>
       <a class="button"
          href="https://windy.app/forecast2/spot/5111979/"
          target="_blank">
-        Открыть прогноз Windy.app
+        🌬️ Открыть прогноз
       </a>
     </div>
 
-  </div>
+  </main>
 
   <div class="footer">
     Прогнозы предоставляются Windy.app
