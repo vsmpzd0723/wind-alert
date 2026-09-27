@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Wind Alert</title>
+  <title>Wind Alert — Крым</title>
 
   <style>
     * {
@@ -27,7 +27,7 @@
 
     .header h1 {
       margin: 0;
-      font-size: 25px;
+      font-size: 26px;
     }
 
     .header p {
@@ -36,32 +36,51 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 700px;
       margin: auto;
       padding: 15px;
     }
 
-    .card {
+    .spot {
       background: white;
-      border-radius: 14px;
-      padding: 15px;
+      border-radius: 15px;
+      padding: 17px;
+      margin-bottom: 13px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    .card h2 {
+    .spot h2 {
       margin: 0 0 5px;
-      font-size: 21px;
+      font-size: 20px;
     }
 
-    .card p {
-      margin: 0 0 15px;
-      color: #60788c;
+    .spot p {
+      margin: 0;
+      color: #718596;
       font-size: 14px;
     }
 
-    .forecast {
-      width: 100%;
-      min-height: 600px;
+    .button {
+      display: block;
+      margin-top: 13px;
+      padding: 13px;
+      background: #0077b6;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .button:active {
+      background: #005f8f;
+    }
+
+    .footer {
+      text-align: center;
+      color: #789;
+      font-size: 12px;
+      padding: 15px;
     }
   </style>
 </head>
@@ -70,35 +89,85 @@
 
   <div class="header">
     <h1>🌬️ Wind Alert</h1>
-    <p>Прогноз для wingfoil</p>
+    <p>Крым · Wingfoil · Windy.app</p>
   </div>
 
   <div class="container">
 
-    <div class="card">
-
+    <div class="spot">
       <h2>Щёлкино · Татарка · Казантип</h2>
-
-      <p>Windy.app — прогноз ветра</p>
-
-      <div
-        class="forecast"
-        data-windywidget="forecast"
-        data-thememode="white"
-        data-responsive="true"
-        data-spotid="206895"
-        data-appid="f703bd89da5575c8eed6c88aa5faed08">
-      </div>
-
-      <script
-        async
-        data-cfasync="false"
-        type="text/javascript"
-        src="https://windy.app/widgets-code/forecast/windy_forecast_async.js">
-      </script>
-
+      <p>Азовское море</p>
+      <a class="button"
+         href="https://windy.app/forecast2/spot/206895/"
+         target="_blank">
+        Открыть прогноз Windy.app
+      </a>
     </div>
 
+    <div class="spot">
+      <h2>Оленевка</h2>
+      <p>Тарханкут · Чёрное море</p>
+      <a class="button"
+         href="https://windy.app/forecast2/spot/8746/"
+         target="_blank">
+        Открыть прогноз Windy.app
+      </a>
+    </div>
+
+    <div class="spot">
+      <h2>Донузлав</h2>
+      <p>Чёрное море</p>
+      <a class="button"
+         href="https://windy.app/forecast2/spot/5329437/"
+         target="_blank">
+        Открыть прогноз Windy.app
+      </a>
+    </div>
+
+    <div class="spot">
+      <h2>Межводное · Kitepleasure</h2>
+      <p>Тарханкут · Чёрное море</p>
+      <a class="button"
+         href="https://windy.app/forecast2/spot/379119/"
+         target="_blank">
+        Открыть прогноз Windy.app
+      </a>
+    </div>
+
+    <div class="spot">
+      <h2>Севастополь</h2>
+      <p>Чёрное море</p>
+      <a class="button"
+         href="https://windy.app/forecast2/spot/561722/"
+         target="_blank">
+        Открыть прогноз Windy.app
+      </a>
+    </div>
+
+    <div class="spot">
+      <h2>Коктебель</h2>
+      <p>Юго-восточный Крым</p>
+      <a class="button"
+         href="https://windy.app/forecast2/spot/813205/"
+         target="_blank">
+        Открыть прогноз Windy.app
+      </a>
+    </div>
+
+    <div class="spot">
+      <h2>Судак</h2>
+      <p>Юго-восточный Крым</p>
+      <a class="button"
+         href="https://windy.app/forecast2/spot/5111979/"
+         target="_blank">
+        Открыть прогноз Windy.app
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Прогнозы предоставляются Windy.app
   </div>
 
 </body>
