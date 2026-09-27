@@ -7,17 +7,22 @@
   <title>Wind Alert</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
       background: #eef5f9;
+      font-family: Arial, sans-serif;
+      color: #17324d;
     }
 
     .header {
       background: #0077b6;
       color: white;
       text-align: center;
-      padding: 18px;
+      padding: 18px 10px;
     }
 
     .header h1 {
@@ -26,7 +31,8 @@
     }
 
     .header p {
-      margin: 6px 0 0;
+      margin: 7px 0 0;
+      font-size: 14px;
     }
 
     .container {
@@ -39,11 +45,23 @@
       background: white;
       border-radius: 14px;
       padding: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     .card h2 {
-      margin-top: 0;
+      margin: 0 0 5px;
+      font-size: 21px;
+    }
+
+    .card p {
+      margin: 0 0 15px;
+      color: #60788c;
+      font-size: 14px;
+    }
+
+    .forecast {
+      width: 100%;
+      min-height: 600px;
     }
   </style>
 </head>
@@ -61,18 +79,22 @@
 
       <h2>Щёлкино · Татарка · Казантип</h2>
 
+      <p>Windy.app — прогноз ветра</p>
+
       <div
-        data-windywidget="map"
+        class="forecast"
+        data-windywidget="forecast"
+        data-thememode="white"
+        data-responsive="true"
         data-spotid="206895"
-        data-appid="f703bd89da5575c8eed6c88aa5faed08"
-        data-spots="true">
+        data-appid="f703bd89da5575c8eed6c88aa5faed08">
       </div>
 
       <script
-        async="true"
+        async
         data-cfasync="false"
         type="text/javascript"
-        src="https://windy.app/widgets-code/map/windy_map_async.js">
+        src="https://windy.app/widgets-code/forecast/windy_forecast_async.js">
       </script>
 
     </div>
