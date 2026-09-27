@@ -26,8 +26,6 @@
       padding: 15px 15px 40px;
     }
 
-    /* ШАПКА */
-
     .header {
       text-align: center;
       padding: 18px 0 20px;
@@ -59,8 +57,6 @@
       font-size: 14px;
     }
 
-    /* КАРТОЧКА */
-
     .card {
       background: rgba(255,255,255,0.96);
       border-radius: 25px;
@@ -82,8 +78,6 @@
       margin-bottom: 15px;
     }
 
-    /* ВЫБОР СПОТА */
-
     select {
       width: 100%;
       height: 56px;
@@ -96,24 +90,6 @@
       font-weight: 600;
       outline: none;
     }
-
-    /* КНОПКА */
-
-    .button {
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      margin-top: 15px;
-      padding: 16px;
-      border-radius: 17px;
-      color: white;
-      background: linear-gradient(135deg, #078bd0, #25b6e9);
-      font-size: 16px;
-      font-weight: 750;
-      box-shadow: 0 8px 20px rgba(13,145,204,0.25);
-    }
-
-    /* ПРОГНОЗ */
 
     .forecast-card {
       background: white;
@@ -130,7 +106,19 @@
       font-weight: 800;
     }
 
-    /* СПОТЫ */
+    .button {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 15px;
+      padding: 16px;
+      border-radius: 17px;
+      color: white;
+      background: linear-gradient(135deg, #078bd0, #25b6e9);
+      font-size: 16px;
+      font-weight: 750;
+      box-shadow: 0 8px 20px rgba(13,145,204,0.25);
+    }
 
     .spots-title {
       font-size: 20px;
@@ -201,17 +189,13 @@
 
 <div class="app">
 
-  <!-- ШАПКА -->
-
   <div class="header">
 
     <div class="logo">
       🌬️
     </div>
 
-    <h1>
-      Wind Alert
-    </h1>
+    <h1>Wind Alert</h1>
 
     <div class="subtitle">
       Wingfoil · Крым
@@ -220,8 +204,6 @@
   </div>
 
 
-  <!-- ВЫБОР СПОТА -->
-
   <div class="card">
 
     <div class="title">
@@ -229,11 +211,11 @@
     </div>
 
     <div class="description">
-      Выберите место — ниже появится реальный прогноз ветра.
+      Выберите место — прогноз автоматически загрузится для выбранного спота.
     </div>
 
-    <select
-      onchange="changeSpot(this.value)">
+
+    <select id="spotSelect">
 
       <option value="206895">
         Щёлкино · Татарка · Казантип
@@ -268,8 +250,6 @@
   </div>
 
 
-  <!-- РЕАЛЬНЫЙ ПРОГНОЗ WINDY.APP -->
-
   <div class="forecast-card">
 
     <div class="forecast-title">
@@ -277,7 +257,6 @@
     </div>
 
     <div
-      id="windyForecast"
       data-windywidget="forecast"
       data-thememode="white"
       data-responsive="true"
@@ -287,8 +266,6 @@
 
   </div>
 
-
-  <!-- КНОПКА -->
 
   <a
     id="openForecast"
@@ -300,8 +277,6 @@
   </a>
 
 
-  <!-- СПОТЫ -->
-
   <div class="spots-title">
     Крымские споты
   </div>
@@ -311,7 +286,6 @@
      href="https://windy.app/forecast2/spot/206895/">
 
     <div class="spot-left">
-
       <div class="spot-icon">🌊</div>
 
       <div>
@@ -323,7 +297,6 @@
           Открыть прогноз
         </div>
       </div>
-
     </div>
 
     <div class="arrow">›</div>
@@ -335,7 +308,6 @@
      href="https://windy.app/forecast2/spot/8746/">
 
     <div class="spot-left">
-
       <div class="spot-icon">🌊</div>
 
       <div>
@@ -347,7 +319,6 @@
           Открыть прогноз
         </div>
       </div>
-
     </div>
 
     <div class="arrow">›</div>
@@ -359,7 +330,6 @@
      href="https://windy.app/forecast2/spot/5329437/">
 
     <div class="spot-left">
-
       <div class="spot-icon">🌊</div>
 
       <div>
@@ -371,7 +341,6 @@
           Открыть прогноз
         </div>
       </div>
-
     </div>
 
     <div class="arrow">›</div>
@@ -383,7 +352,6 @@
      href="https://windy.app/forecast2/spot/379119/">
 
     <div class="spot-left">
-
       <div class="spot-icon">🌊</div>
 
       <div>
@@ -395,7 +363,6 @@
           Открыть прогноз
         </div>
       </div>
-
     </div>
 
     <div class="arrow">›</div>
@@ -407,7 +374,6 @@
      href="https://windy.app/forecast2/spot/561722/">
 
     <div class="spot-left">
-
       <div class="spot-icon">🌊</div>
 
       <div>
@@ -419,7 +385,6 @@
           Открыть прогноз
         </div>
       </div>
-
     </div>
 
     <div class="arrow">›</div>
@@ -431,7 +396,6 @@
      href="https://windy.app/forecast2/spot/813205/">
 
     <div class="spot-left">
-
       <div class="spot-icon">🌊</div>
 
       <div>
@@ -443,7 +407,6 @@
           Открыть прогноз
         </div>
       </div>
-
     </div>
 
     <div class="arrow">›</div>
@@ -455,7 +418,6 @@
      href="https://windy.app/forecast2/spot/5111979/">
 
     <div class="spot-left">
-
       <div class="spot-icon">🌊</div>
 
       <div>
@@ -467,7 +429,6 @@
           Открыть прогноз
         </div>
       </div>
-
     </div>
 
     <div class="arrow">›</div>
@@ -482,8 +443,6 @@
 </div>
 
 
-<!-- WINDY.APP SCRIPT -->
-
 <script
   async
   type="text/javascript"
@@ -491,57 +450,37 @@
 </script>
 
 
-<!-- ПЕРЕКЛЮЧЕНИЕ СПОТА -->
-
 <script>
 
-function changeSpot(spotId) {
+const select = document.getElementById("spotSelect");
 
-  var forecast = document.getElementById("windyForecast");
+select.addEventListener("change", function() {
 
-  var button = document.getElementById("openForecast");
+  const spotId = this.value;
 
-  var urls = {
+  const newUrl =
+    window.location.pathname +
+    "?spot=" +
+    spotId;
 
-    "206895":
-      "https://windy.app/forecast2/spot/206895/",
+  window.location.href = newUrl;
 
-    "8746":
-      "https://windy.app/forecast2/spot/8746/",
+});
 
-    "5329437":
-      "https://windy.app/forecast2/spot/5329437/",
 
-    "379119":
-      "https://windy.app/forecast2/spot/379119/",
+const params = new URLSearchParams(window.location.search);
 
-    "561722":
-      "https://windy.app/forecast2/spot/561722/",
+const selectedSpot =
+  params.get("spot");
 
-    "813205":
-      "https://windy.app/forecast2/spot/813205/",
+if (selectedSpot) {
 
-    "5111979":
-      "https://windy.app/forecast2/spot/5111979/"
-  };
-
-  forecast.setAttribute("data-spotid", spotId);
-
-  button.href = urls[spotId];
-
-  if (window.WindyWidgets) {
-
-    location.reload();
-
-  } else {
-
-    location.reload();
-
-  }
+  select.value = selectedSpot;
 
 }
 
 </script>
+
 
 </body>
 </html>
