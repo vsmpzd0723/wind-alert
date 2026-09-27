@@ -2,117 +2,225 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Wind Alert — прогноз ветра</title>
+  <title>Wind Alert</title>
 
   <style>
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: #eef5f8;
-      color: #17252d;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #dff4ff 0%, #f5fbff 45%, #eef6fa 100%);
+      color: #102a38;
+      min-height: 100vh;
     }
 
-    .container {
+    .app {
       max-width: 600px;
       margin: 0 auto;
-      padding: 20px 15px 40px;
+      padding: 18px 16px 35px;
     }
+
+    /* HEADER */
 
     .header {
       text-align: center;
-      padding: 20px 10px 25px;
+      padding: 18px 0 22px;
     }
 
-    .logo {
-      font-size: 42px;
-      margin-bottom: 5px;
+    .wind-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 10px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #168fd0, #35b9ed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      box-shadow: 0 10px 25px rgba(15, 137, 195, 0.25);
     }
 
-    h1 {
+    .header h1 {
       margin: 0;
-      font-size: 30px;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
-    .subtitle {
-      margin-top: 8px;
-      color: #60727c;
-      font-size: 15px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-
-    .title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .description {
-      color: #667780;
+    .header p {
+      margin: 6px 0 0;
+      color: #64808d;
       font-size: 14px;
-      line-height: 1.4;
+    }
+
+    /* MAIN CARD */
+
+    .main-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 26px;
+      padding: 20px;
+      box-shadow: 0 12px 35px rgba(35, 92, 120, 0.12);
       margin-bottom: 18px;
     }
 
-    select {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #d7e1e5;
-      border-radius: 13px;
-      background: white;
-      font-size: 16px;
-      color: #17252d;
-      outline: none;
+    .section-title {
+      font-size: 18px;
+      font-weight: 750;
+      margin-bottom: 5px;
     }
 
-    .hint {
-      margin-top: 15px;
-      text-align: center;
-      color: #71838b;
+    .section-subtitle {
+      color: #718792;
+      font-size: 13px;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    /* SELECT */
+
+    select {
+      width: 100%;
+      height: 56px;
+      padding: 0 16px;
+      border: 1px solid #d8e7ed;
+      border-radius: 17px;
+      background: #f8fcfe;
+      color: #143442;
+      font-size: 16px;
+      font-weight: 600;
+      outline: none;
+      appearance: auto;
+    }
+
+    /* WIND STATUS */
+
+    .status {
+      margin-top: 18px;
+      border-radius: 21px;
+      padding: 18px;
+      background: linear-gradient(135deg, #e9f8ff, #f8fdff);
+      border: 1px solid #d9eef7;
+    }
+
+    .status-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .status-label {
+      color: #66808c;
       font-size: 13px;
     }
 
-    .spots {
-      margin-top: 20px;
+    .status-value {
+      margin-top: 4px;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .status-icon {
+      font-size: 36px;
+    }
+
+    .status-text {
+      margin-top: 13px;
+      color: #5e7884;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* BUTTON */
+
+    .open-button {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #108dcc, #24b4e9);
+      color: white;
+      font-size: 16px;
+      font-weight: 750;
+      box-shadow: 0 8px 20px rgba(18, 148, 207, 0.25);
+    }
+
+    .open-button:active {
+      transform: scale(0.98);
+    }
+
+    /* SPOTS */
+
+    .spots-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 25px 4px 12px;
     }
 
     .spot {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       text-decoration: none;
-      color: #17252d;
-      background: white;
-      border-radius: 15px;
-      padding: 15px;
+      color: #173745;
+      background: rgba(255,255,255,0.92);
+      border-radius: 19px;
+      padding: 15px 16px;
       margin-bottom: 10px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 5px 18px rgba(35, 92, 120, 0.08);
+    }
+
+    .spot-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .spot-icon {
+      width: 43px;
+      height: 43px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: #e8f7fd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
     }
 
     .spot-name {
+      font-size: 15px;
       font-weight: 700;
-      font-size: 16px;
+      line-height: 1.25;
     }
 
     .spot-action {
-      margin-top: 5px;
-      color: #1687c8;
-      font-size: 14px;
+      margin-top: 3px;
+      color: #72909c;
+      font-size: 12px;
     }
+
+    .arrow {
+      color: #1596d0;
+      font-size: 22px;
+      padding-left: 8px;
+    }
+
+    /* FOOTER */
 
     .footer {
       text-align: center;
       margin-top: 25px;
-      color: #89979d;
+      color: #8298a1;
       font-size: 12px;
     }
   </style>
@@ -120,149 +228,319 @@
 
 <body>
 
-  <div class="container">
+<div class="app">
 
-    <div class="header">
-      <div class="logo">🌬️</div>
-      <h1>Wind Alert</h1>
-      <div class="subtitle">
-        Прогноз ветра для wingfoil
-      </div>
+  <!-- HEADER -->
+
+  <div class="header">
+    <div class="wind-icon">🌬️</div>
+
+    <h1>Wind Alert</h1>
+
+    <p>Ветер для wingfoil в Крыму</p>
+  </div>
+
+
+  <!-- MAIN -->
+
+  <div class="main-card">
+
+    <div class="section-title">
+      📍 Выберите спот
     </div>
 
-    <div class="card">
+    <div class="section-subtitle">
+      Откройте актуальный прогноз ветра в Windy.app
+    </div>
 
-      <div class="title">
+
+    <select onchange="if(this.value) window.location.href=this.value">
+
+      <option value="">
         Выберите спот
+      </option>
+
+      <option value="https://windy.app/forecast2/spot/206895/">
+        Щёлкино · Татарка · Казантип
+      </option>
+
+      <option value="https://windy.app/forecast2/spot/8746/">
+        Оленевка
+      </option>
+
+      <option value="https://windy.app/forecast2/spot/5329437/">
+        Донузлав
+      </option>
+
+      <option value="https://windy.app/forecast2/spot/379119/">
+        Межводное · Kitepleasure
+      </option>
+
+      <option value="https://windy.app/forecast2/spot/561722/">
+        Севастополь
+      </option>
+
+      <option value="https://windy.app/forecast2/spot/813205/">
+        Коктебель
+      </option>
+
+      <option value="https://windy.app/forecast2/spot/5111979/">
+        Судак
+      </option>
+
+    </select>
+
+
+    <!-- WINGFOIL STATUS -->
+
+    <div class="status">
+
+      <div class="status-top">
+
+        <div>
+          <div class="status-label">
+            Условия для wingfoil
+          </div>
+
+          <div class="status-value">
+            Смотри прогноз
+          </div>
+        </div>
+
+        <div class="status-icon">
+          🏄
+        </div>
+
       </div>
 
-      <div class="description">
-        Выберите нужный крымский спот — откроется подробный прогноз ветра в Windy.app.
-      </div>
-
-      <select
-        onchange="if(this.value) window.location.href=this.value"
-      >
-
-        <option value="">
-          Выберите спот
-        </option>
-
-        <option value="https://windy.app/forecast2/spot/206895/">
-          Щёлкино · Татарка · Казантип
-        </option>
-
-        <option value="https://windy.app/forecast2/spot/8746/">
-          Оленевка
-        </option>
-
-        <option value="https://windy.app/forecast2/spot/5329437/">
-          Донузлав
-        </option>
-
-        <option value="https://windy.app/forecast2/spot/379119/">
-          Межводное · Kitepleasure
-        </option>
-
-        <option value="https://windy.app/forecast2/spot/561722/">
-          Севастополь
-        </option>
-
-        <option value="https://windy.app/forecast2/spot/813205/">
-          Коктебель
-        </option>
-
-        <option value="https://windy.app/forecast2/spot/5111979/">
-          Судак
-        </option>
-
-      </select>
-
-      <div class="hint">
-        👆 Выберите спот выше
+      <div class="status-text">
+        Скорость и направление ветра могут быстро меняться.
+        Перед выходом на воду проверьте подробный прогноз.
       </div>
 
     </div>
 
-    <div class="spots">
 
-      <a class="spot"
-         href="https://windy.app/forecast2/spot/206895/">
-        <div class="spot-name">
-          📍 Щёлкино · Татарка · Казантип
-        </div>
-        <div class="spot-action">
-          Открыть прогноз →
-        </div>
-      </a>
+    <!-- BUTTON -->
 
-      <a class="spot"
-         href="https://windy.app/forecast2/spot/8746/">
-        <div class="spot-name">
-          📍 Оленевка
-        </div>
-        <div class="spot-action">
-          Открыть прогноз →
-        </div>
-      </a>
-
-      <a class="spot"
-         href="https://windy.app/forecast2/spot/5329437/">
-        <div class="spot-name">
-          📍 Донузлав
-        </div>
-        <div class="spot-action">
-          Открыть прогноз →
-        </div>
-      </a>
-
-      <a class="spot"
-         href="https://windy.app/forecast2/spot/379119/">
-        <div class="spot-name">
-          📍 Межводное · Kitepleasure
-        </div>
-        <div class="spot-action">
-          Открыть прогноз →
-        </div>
-      </a>
-
-      <a class="spot"
-         href="https://windy.app/forecast2/spot/561722/">
-        <div class="spot-name">
-          📍 Севастополь
-        </div>
-        <div class="spot-action">
-          Открыть прогноз →
-        </div>
-      </a>
-
-      <a class="spot"
-         href="https://windy.app/forecast2/spot/813205/">
-        <div class="spot-name">
-          📍 Коктебель
-        </div>
-        <div class="spot-action">
-          Открыть прогноз →
-        </div>
-      </a>
-
-      <a class="spot"
-         href="https://windy.app/forecast2/spot/5111979/">
-        <div class="spot-name">
-          📍 Судак
-        </div>
-        <div class="spot-action">
-          Открыть прогноз →
-        </div>
-      </a>
-
-    </div>
-
-    <div class="footer">
-      Wind Alert · Crimea Wingfoil
-    </div>
+    <a
+      class="open-button"
+      href="https://windy.app/forecast2/spot/206895/"
+    >
+      🌬️ Открыть прогноз
+    </a>
 
   </div>
+
+
+  <!-- SPOTS -->
+
+  <div class="spots-title">
+    Крымские споты
+  </div>
+
+
+  <a class="spot"
+     href="https://windy.app/forecast2/spot/206895/">
+
+    <div class="spot-left">
+
+      <div class="spot-icon">
+        🌊
+      </div>
+
+      <div>
+        <div class="spot-name">
+          Щёлкино · Татарка · Казантип
+        </div>
+
+        <div class="spot-action">
+          Открыть прогноз
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arrow">
+      ›
+    </div>
+
+  </a>
+
+
+  <a class="spot"
+     href="https://windy.app/forecast2/spot/8746/">
+
+    <div class="spot-left">
+
+      <div class="spot-icon">
+        🌊
+      </div>
+
+      <div>
+        <div class="spot-name">
+          Оленевка
+        </div>
+
+        <div class="spot-action">
+          Открыть прогноз
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arrow">
+      ›
+    </div>
+
+  </a>
+
+
+  <a class="spot"
+     href="https://windy.app/forecast2/spot/5329437/">
+
+    <div class="spot-left">
+
+      <div class="spot-icon">
+        🌊
+      </div>
+
+      <div>
+        <div class="spot-name">
+          Донузлав
+        </div>
+
+        <div class="spot-action">
+          Открыть прогноз
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arrow">
+      ›
+    </div>
+
+  </a>
+
+
+  <a class="spot"
+     href="https://windy.app/forecast2/spot/379119/">
+
+    <div class="spot-left">
+
+      <div class="spot-icon">
+        🌊
+      </div>
+
+      <div>
+        <div class="spot-name">
+          Межводное · Kitepleasure
+        </div>
+
+        <div class="spot-action">
+          Открыть прогноз
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arrow">
+      ›
+    </div>
+
+  </a>
+
+
+  <a class="spot"
+     href="https://windy.app/forecast2/spot/561722/">
+
+    <div class="spot-left">
+
+      <div class="spot-icon">
+        🌊
+      </div>
+
+      <div>
+        <div class="spot-name">
+          Севастополь
+        </div>
+
+        <div class="spot-action">
+          Открыть прогноз
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arrow">
+      ›
+    </div>
+
+  </a>
+
+
+  <a class="spot"
+     href="https://windy.app/forecast2/spot/813205/">
+
+    <div class="spot-left">
+
+      <div class="spot-icon">
+        🌊
+      </div>
+
+      <div>
+        <div class="spot-name">
+          Коктебель
+        </div>
+
+        <div class="spot-action">
+          Открыть прогноз
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arrow">
+      ›
+    </div>
+
+  </a>
+
+
+  <a class="spot"
+     href="https://windy.app/forecast2/spot/5111979/">
+
+    <div class="spot-left">
+
+      <div class="spot-icon">
+        🌊
+      </div>
+
+      <div>
+        <div class="spot-name">
+          Судак
+        </div>
+
+        <div class="spot-action">
+          Открыть прогноз
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arrow">
+      ›
+    </div>
+
+  </a>
+
+
+  <div class="footer">
+    Wind Alert · Wingfoil Crimea
+  </div>
+
+</div>
 
 </body>
 </html>
