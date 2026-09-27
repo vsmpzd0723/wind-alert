@@ -30,8 +30,6 @@
       padding: 15px;
     }
 
-    /* HEADER */
-
     header {
       text-align: center;
       padding: 15px 10px 20px;
@@ -55,15 +53,13 @@
         #0066ff
       );
 
-      box-shadow:
-        0 10px 25px rgba(0, 120, 255, 0.25);
+      box-shadow: 0 10px 25px rgba(0, 120, 255, 0.25);
     }
 
     h1 {
       margin: 0;
       font-size: 30px;
       font-weight: 800;
-      letter-spacing: -0.5px;
     }
 
     .subtitle {
@@ -72,16 +68,13 @@
       font-size: 15px;
     }
 
-    /* CARD */
-
     .card {
       background: rgba(255,255,255,0.94);
       border-radius: 22px;
       padding: 18px;
       margin-bottom: 15px;
 
-      box-shadow:
-        0 8px 25px rgba(40, 100, 130, 0.08);
+      box-shadow: 0 8px 25px rgba(40, 100, 130, 0.08);
     }
 
     .card-title {
@@ -89,8 +82,6 @@
       font-weight: 700;
       margin-bottom: 10px;
     }
-
-    /* SELECT */
 
     select {
       width: 100%;
@@ -105,10 +96,7 @@
       color: #102a43;
 
       outline: none;
-      appearance: auto;
     }
-
-    /* BUTTON */
 
     .button {
       display: block;
@@ -132,11 +120,8 @@
         #0066ff
       );
 
-      box-shadow:
-        0 8px 18px rgba(0, 110, 255, 0.22);
+      box-shadow: 0 8px 18px rgba(0, 110, 255, 0.22);
     }
-
-    /* STATUS */
 
     .status {
       display: flex;
@@ -170,19 +155,18 @@
       color: #71879a;
     }
 
-    /* FORECAST */
-
     .forecast-card {
       padding: 10px;
       overflow: hidden;
     }
 
-    #forecastContainer {
+    .forecast {
       width: 100%;
-      min-height: 300px;
     }
 
-    /* INFO */
+    .hidden {
+      display: none;
+    }
 
     .info {
       font-size: 13px;
@@ -193,8 +177,6 @@
     .info strong {
       color: #29465d;
     }
-
-    /* FOOTER */
 
     footer {
       text-align: center;
@@ -209,8 +191,6 @@
 <body>
 
 <div class="app">
-
-  <!-- HEADER -->
 
   <header>
 
@@ -227,7 +207,7 @@
   </header>
 
 
-  <!-- SPOT SELECT -->
+  <!-- ВЫБОР СПОТА -->
 
   <div class="card">
 
@@ -259,6 +239,7 @@
 
     </select>
 
+
     <a
       id="openForecast"
       class="button"
@@ -271,7 +252,7 @@
   </div>
 
 
-  <!-- STATUS -->
+  <!-- ИНФОРМАЦИЯ -->
 
   <div class="card">
 
@@ -283,12 +264,12 @@
 
       <div>
 
-        <div class="status-title">
-          Прогноз для wingfoil
+        <div class="status-title" id="selectedSpot">
+          Щёлкино · Татарка · Казантип
         </div>
 
         <div class="status-text">
-          Ниже — актуальный прогноз выбранного спота
+          Актуальный прогноз Windy.app
         </div>
 
       </div>
@@ -298,16 +279,104 @@
   </div>
 
 
-  <!-- REAL WINDY.APP FORECAST -->
+  <!-- ПРОГНОЗЫ -->
 
   <div class="card forecast-card">
 
-    <div id="forecastContainer"></div>
+
+    <!-- ЩЁЛКИНО -->
+
+    <div
+      id="forecast-206895"
+      class="forecast"
+    >
+
+      <div
+        data-windywidget="forecast"
+        data-thememode="white"
+        data-responsive="true"
+        data-spotid="206895"
+        data-appid="f703bd89da5575c8eed6c88aa5faed08">
+      </div>
+
+    </div>
+
+
+    <!-- ОЛЕНЕВКА -->
+
+    <div
+      id="forecast-8746"
+      class="forecast hidden"
+    >
+
+      <div
+        data-windywidget="forecast"
+        data-thememode="white"
+        data-responsive="true"
+        data-spotid="8746"
+        data-appid="f703bd89da5575c8eed6c88aa5faed08">
+      </div>
+
+    </div>
+
+
+    <!-- ДОНУЗЛАВ -->
+
+    <div
+      id="forecast-5329437"
+      class="forecast hidden"
+    >
+
+      <div
+        data-windywidget="forecast"
+        data-thememode="white"
+        data-responsive="true"
+        data-spotid="5329437"
+        data-appid="f703bd89da5575c8eed6c88aa5faed08">
+      </div>
+
+    </div>
+
+
+    <!-- МЕЖВОДНОЕ -->
+
+    <div
+      id="forecast-379119"
+      class="forecast hidden"
+    >
+
+      <div
+        data-windywidget="forecast"
+        data-thememode="white"
+        data-responsive="true"
+        data-spotid="379119"
+        data-appid="f703bd89da5575c8eed6c88aa5faed08">
+      </div>
+
+    </div>
+
+
+    <!-- СЕВАСТОПОЛЬ -->
+
+    <div
+      id="forecast-561722"
+      class="forecast hidden"
+    >
+
+      <div
+        data-windywidget="forecast"
+        data-thememode="white"
+        data-responsive="true"
+        data-spotid="561722"
+        data-appid="f703bd89da5575c8eed6c88aa5faed08">
+      </div>
+
+    </div>
 
   </div>
 
 
-  <!-- INFO -->
+  <!-- ПОДСКАЗКА -->
 
   <div class="card info">
 
@@ -327,11 +396,26 @@
 </div>
 
 
+<!-- WINDY.APP SCRIPT -->
+
+<script
+  async
+  type="text/javascript"
+  src="https://windy.app/widgets-code/forecast/windy_forecast_async.js">
+</script>
+
+
 <script>
 
-  /* ================================
-     СПОТЫ
-  ================================= */
+  const select =
+    document.getElementById("spotSelect");
+
+  const button =
+    document.getElementById("openForecast");
+
+  const title =
+    document.getElementById("selectedSpot");
+
 
   const spots = {
 
@@ -363,123 +447,61 @@
   };
 
 
-  /* ================================
-     ПОЛУЧАЕМ ВЫБРАННЫЙ СПОТ
-  ================================= */
+  function showSpot(spotId) {
 
-  const params = new URLSearchParams(
-    window.location.search
-  );
+    /* Скрываем все прогнозы */
 
-  let spotId = params.get("spot");
+    document
+      .querySelectorAll(".forecast")
+      .forEach(function(item) {
+
+        item.classList.add("hidden");
+
+      });
 
 
-  /* Если такого спота нет —
-     открываем Щёлкино */
+    /* Показываем выбранный */
 
-  if (!spots[spotId]) {
-    spotId = "206895";
+    const selected =
+      document.getElementById(
+        "forecast-" + spotId
+      );
+
+
+    if (selected) {
+
+      selected.classList.remove("hidden");
+
+    }
+
+
+    /* Меняем название */
+
+    title.textContent =
+      spots[spotId].name;
+
+
+    /* Меняем кнопку */
+
+    button.href =
+      spots[spotId].url;
+
   }
 
 
-  /* ================================
-     УСТАНАВЛИВАЕМ SELECT
-  ================================= */
-
-  const select =
-    document.getElementById("spotSelect");
-
-  select.value = spotId;
-
-
-  /* ================================
-     КНОПКА WINDY.APP
-  ================================= */
-
-  const button =
-    document.getElementById("openForecast");
-
-  button.href = spots[spotId].url;
-
-
-  /* ================================
-     СОЗДАЁМ WINDY.APP WIDGET
-  ================================= */
-
-  const container =
-    document.getElementById("forecastContainer");
-
-
-  const forecast =
-    document.createElement("div");
-
-
-  forecast.setAttribute(
-    "data-windywidget",
-    "forecast"
-  );
-
-  forecast.setAttribute(
-    "data-thememode",
-    "white"
-  );
-
-  forecast.setAttribute(
-    "data-responsive",
-    "true"
-  );
-
-  forecast.setAttribute(
-    "data-spotid",
-    spotId
-  );
-
-  forecast.setAttribute(
-    "data-appid",
-    "f703bd89da5575c8eed6c88aa5faed08"
-  );
-
-
-  container.appendChild(forecast);
-
-
-  /* ================================
-     ЗАГРУЖАЕМ WINDY.APP SCRIPT
-  ================================= */
-
-  const script =
-    document.createElement("script");
-
-  script.async = true;
-
-  script.type =
-    "text/javascript";
-
-  script.src =
-    "https://windy.app/widgets-code/forecast/windy_forecast_async.js";
-
-
-  document.body.appendChild(script);
-
-
-  /* ================================
-     ПЕРЕКЛЮЧЕНИЕ СПОТА
-  ================================= */
-
   select.addEventListener(
     "change",
-    function () {
+    function() {
 
-      const newSpot =
-        this.value;
-
-      window.location.href =
-        window.location.pathname +
-        "?spot=" +
-        newSpot;
+      showSpot(this.value);
 
     }
   );
+
+
+  /* Первый спот */
+
+  showSpot("206895");
 
 </script>
 
