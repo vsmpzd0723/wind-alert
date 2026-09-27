@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Wind Alert</title>
+  <title>Wind Alert — Wingfoil Crimea</title>
 
   <style>
     * {
@@ -16,71 +16,71 @@
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
                    "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(180deg, #dff4ff 0%, #f5fbff 45%, #eef6fa 100%);
+      background: linear-gradient(180deg, #dff5ff 0%, #f4fbff 45%, #edf5f8 100%);
       color: #102a38;
       min-height: 100vh;
     }
 
     .app {
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto;
-      padding: 18px 16px 35px;
+      padding: 15px 15px 35px;
     }
 
     /* HEADER */
 
     .header {
       text-align: center;
-      padding: 18px 0 22px;
+      padding: 18px 0 20px;
     }
 
-    .wind-icon {
-      width: 70px;
-      height: 70px;
+    .logo {
+      width: 72px;
+      height: 72px;
       margin: 0 auto 10px;
-      border-radius: 22px;
-      background: linear-gradient(145deg, #168fd0, #35b9ed);
+      border-radius: 23px;
+      background: linear-gradient(145deg, #078bd0, #36c0ef);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 38px;
-      box-shadow: 0 10px 25px rgba(15, 137, 195, 0.25);
+      font-size: 39px;
+      box-shadow: 0 10px 25px rgba(0, 135, 200, 0.25);
     }
 
-    .header h1 {
+    h1 {
       margin: 0;
       font-size: 32px;
       font-weight: 800;
       letter-spacing: -1px;
     }
 
-    .header p {
-      margin: 6px 0 0;
-      color: #64808d;
+    .subtitle {
+      margin-top: 6px;
+      color: #6c8490;
       font-size: 14px;
     }
 
     /* MAIN CARD */
 
-    .main-card {
-      background: rgba(255,255,255,0.92);
-      border-radius: 26px;
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 25px;
       padding: 20px;
-      box-shadow: 0 12px 35px rgba(35, 92, 120, 0.12);
+      box-shadow: 0 10px 35px rgba(40, 100, 125, 0.12);
       margin-bottom: 18px;
     }
 
-    .section-title {
-      font-size: 18px;
-      font-weight: 750;
+    .title {
+      font-size: 19px;
+      font-weight: 800;
       margin-bottom: 5px;
     }
 
-    .section-subtitle {
-      color: #718792;
+    .description {
+      color: #718892;
       font-size: 13px;
-      margin-bottom: 15px;
       line-height: 1.4;
+      margin-bottom: 15px;
     }
 
     /* SELECT */
@@ -88,72 +88,71 @@
     select {
       width: 100%;
       height: 56px;
-      padding: 0 16px;
+      padding: 0 15px;
       border: 1px solid #d8e7ed;
       border-radius: 17px;
       background: #f8fcfe;
-      color: #143442;
+      color: #153542;
       font-size: 16px;
       font-weight: 600;
       outline: none;
-      appearance: auto;
     }
 
-    /* WIND STATUS */
+    /* STATUS */
 
     .status {
-      margin-top: 18px;
-      border-radius: 21px;
-      padding: 18px;
-      background: linear-gradient(135deg, #e9f8ff, #f8fdff);
-      border: 1px solid #d9eef7;
+      margin-top: 17px;
+      padding: 17px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #e8f8ff, #f8fdff);
+      border: 1px solid #d8eef7;
     }
 
-    .status-top {
+    .status-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .status-label {
-      color: #66808c;
-      font-size: 13px;
+    .status-small {
+      color: #718993;
+      font-size: 12px;
     }
 
-    .status-value {
-      margin-top: 4px;
-      font-size: 23px;
+    .status-big {
+      margin-top: 3px;
+      font-size: 21px;
       font-weight: 800;
     }
 
     .status-icon {
-      font-size: 36px;
+      font-size: 35px;
     }
 
     .status-text {
-      margin-top: 13px;
-      color: #5e7884;
+      margin-top: 10px;
+      color: #607984;
       font-size: 13px;
       line-height: 1.4;
     }
 
     /* BUTTON */
 
-    .open-button {
+    .button {
       display: block;
-      text-decoration: none;
       text-align: center;
-      margin-top: 16px;
+      text-decoration: none;
+      margin-top: 15px;
       padding: 16px;
       border-radius: 17px;
-      background: linear-gradient(135deg, #108dcc, #24b4e9);
       color: white;
+      background: linear-gradient(135deg, #078bd0, #25b6e9);
       font-size: 16px;
       font-weight: 750;
-      box-shadow: 0 8px 20px rgba(18, 148, 207, 0.25);
+      box-shadow: 0 8px 20px rgba(13, 145, 204, 0.25);
     }
 
-    .open-button:active {
+    .button:active {
       transform: scale(0.98);
     }
 
@@ -170,12 +169,12 @@
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
-      color: #173745;
-      background: rgba(255,255,255,0.92);
+      color: #163744;
+      background: rgba(255,255,255,0.94);
       border-radius: 19px;
-      padding: 15px 16px;
+      padding: 14px;
       margin-bottom: 10px;
-      box-shadow: 0 5px 18px rgba(35, 92, 120, 0.08);
+      box-shadow: 0 5px 17px rgba(35, 90, 115, 0.08);
     }
 
     .spot-left {
@@ -186,11 +185,11 @@
     }
 
     .spot-icon {
-      width: 43px;
-      height: 43px;
+      width: 44px;
+      height: 44px;
       flex-shrink: 0;
       border-radius: 14px;
-      background: #e8f7fd;
+      background: #e7f7fd;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -203,19 +202,17 @@
       line-height: 1.25;
     }
 
-    .spot-action {
+    .spot-sub {
       margin-top: 3px;
-      color: #72909c;
+      color: #78909a;
       font-size: 12px;
     }
 
     .arrow {
-      color: #1596d0;
-      font-size: 22px;
+      color: #1197d1;
+      font-size: 24px;
       padding-left: 8px;
     }
-
-    /* FOOTER */
 
     .footer {
       text-align: center;
@@ -233,28 +230,37 @@
   <!-- HEADER -->
 
   <div class="header">
-    <div class="wind-icon">🌬️</div>
 
-    <h1>Wind Alert</h1>
+    <div class="logo">
+      🌬️
+    </div>
 
-    <p>Ветер для wingfoil в Крыму</p>
+    <h1>
+      Wind Alert
+    </h1>
+
+    <div class="subtitle">
+      Wingfoil · Крым
+    </div>
+
   </div>
 
 
   <!-- MAIN -->
 
-  <div class="main-card">
+  <div class="card">
 
-    <div class="section-title">
+    <div class="title">
       📍 Выберите спот
     </div>
 
-    <div class="section-subtitle">
-      Откройте актуальный прогноз ветра в Windy.app
+    <div class="description">
+      Выберите место и откройте подробный прогноз ветра.
     </div>
 
 
-    <select onchange="if(this.value) window.location.href=this.value">
+    <select
+      onchange="if(this.value) window.location.href=this.value">
 
       <option value="">
         Выберите спот
@@ -295,16 +301,18 @@
 
     <div class="status">
 
-      <div class="status-top">
+      <div class="status-row">
 
         <div>
-          <div class="status-label">
-            Условия для wingfoil
+
+          <div class="status-small">
+            Для wingfoil
           </div>
 
-          <div class="status-value">
-            Смотри прогноз
+          <div class="status-big">
+            Проверить ветер
           </div>
+
         </div>
 
         <div class="status-icon">
@@ -314,20 +322,19 @@
       </div>
 
       <div class="status-text">
-        Скорость и направление ветра могут быстро меняться.
-        Перед выходом на воду проверьте подробный прогноз.
+        В Windy.app можно посмотреть скорость ветра,
+        порывы и направление на ближайшие дни.
       </div>
 
     </div>
 
 
-    <!-- BUTTON -->
-
     <a
-      class="open-button"
-      href="https://windy.app/forecast2/spot/206895/"
-    >
+      class="button"
+      href="https://windy.app/forecast2/spot/206895/">
+
       🌬️ Открыть прогноз
+
     </a>
 
   </div>
@@ -350,13 +357,15 @@
       </div>
 
       <div>
+
         <div class="spot-name">
           Щёлкино · Татарка · Казантип
         </div>
 
-        <div class="spot-action">
-          Открыть прогноз
+        <div class="spot-sub">
+          Windy.app прогноз
         </div>
+
       </div>
 
     </div>
@@ -378,13 +387,15 @@
       </div>
 
       <div>
+
         <div class="spot-name">
           Оленевка
         </div>
 
-        <div class="spot-action">
-          Открыть прогноз
+        <div class="spot-sub">
+          Windy.app прогноз
         </div>
+
       </div>
 
     </div>
@@ -406,13 +417,15 @@
       </div>
 
       <div>
+
         <div class="spot-name">
           Донузлав
         </div>
 
-        <div class="spot-action">
-          Открыть прогноз
+        <div class="spot-sub">
+          Windy.app прогноз
         </div>
+
       </div>
 
     </div>
@@ -434,13 +447,15 @@
       </div>
 
       <div>
+
         <div class="spot-name">
           Межводное · Kitepleasure
         </div>
 
-        <div class="spot-action">
-          Открыть прогноз
+        <div class="spot-sub">
+          Windy.app прогноз
         </div>
+
       </div>
 
     </div>
@@ -462,13 +477,15 @@
       </div>
 
       <div>
+
         <div class="spot-name">
           Севастополь
         </div>
 
-        <div class="spot-action">
-          Открыть прогноз
+        <div class="spot-sub">
+          Windy.app прогноз
         </div>
+
       </div>
 
     </div>
@@ -490,13 +507,15 @@
       </div>
 
       <div>
+
         <div class="spot-name">
           Коктебель
         </div>
 
-        <div class="spot-action">
-          Открыть прогноз
+        <div class="spot-sub">
+          Windy.app прогноз
         </div>
+
       </div>
 
     </div>
@@ -518,13 +537,15 @@
       </div>
 
       <div>
+
         <div class="spot-name">
           Судак
         </div>
 
-        <div class="spot-action">
-          Открыть прогноз
+        <div class="spot-sub">
+          Windy.app прогноз
         </div>
+
       </div>
 
     </div>
