@@ -2,15 +2,10 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 
   <title>Wind Alert</title>
 
-  <!-- PWA -->
   <link rel="manifest" href="./manifest.json">
 
   <meta name="theme-color" content="#087cf5">
@@ -19,7 +14,6 @@
   <meta name="apple-mobile-web-app-title" content="Wind Alert">
 
   <style>
-
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
@@ -32,51 +26,28 @@
     body {
       margin: 0;
       min-height: 100vh;
-
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "SF Pro Text",
-        Arial,
-        sans-serif;
-
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+        "SF Pro Text", Arial, sans-serif;
       color: #12253a;
-
       background:
-        radial-gradient(
-          circle at 15% 0%,
-          #d9f1ff 0%,
-          transparent 32%
-        ),
-        linear-gradient(
-          180deg,
-          #f4f9fd 0%,
-          #eaf3f9 100%
-        );
+        radial-gradient(circle at 15% 0%, #d9f1ff 0%, transparent 32%),
+        linear-gradient(180deg, #f4f9fd 0%, #eaf3f9 100%);
     }
 
     .app {
       width: 100%;
       max-width: 620px;
-
       margin: 0 auto;
-
       padding:
         calc(14px + env(safe-area-inset-top))
         14px
         calc(100px + env(safe-area-inset-bottom));
     }
 
-    /* =========================
-       HEADER
-       ========================= */
-
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       margin-bottom: 18px;
     }
 
@@ -89,25 +60,13 @@
     .logo {
       width: 46px;
       height: 46px;
-
       border-radius: 15px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       font-size: 24px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #087cf5,
-          #00b9ff
-        );
-
-      box-shadow:
-        0 8px 22px
-        rgba(8,124,245,.25);
+      background: linear-gradient(135deg, #087cf5, #00b9ff);
+      box-shadow: 0 8px 22px rgba(8,124,245,.25);
     }
 
     .brand-title {
@@ -118,9 +77,7 @@
 
     .brand-subtitle {
       margin-top: 3px;
-
       font-size: 12px;
-
       color: #718398;
     }
 
@@ -128,52 +85,29 @@
       display: flex;
       align-items: center;
       gap: 7px;
-
       padding: 8px 11px;
-
       border-radius: 20px;
-
       background: rgba(255,255,255,.82);
-
-      box-shadow:
-        0 5px 18px
-        rgba(30,70,100,.08);
-
+      box-shadow: 0 5px 18px rgba(30,70,100,.08);
       font-size: 10px;
       font-weight: 800;
-
       color: #63768a;
     }
 
     .live-dot {
       width: 7px;
       height: 7px;
-
       border-radius: 50%;
-
       background: #20c878;
-
-      box-shadow:
-        0 0 0 4px
-        rgba(32,200,120,.12);
+      box-shadow: 0 0 0 4px rgba(32,200,120,.12);
     }
-
-    /* =========================
-       SPOT SELECTOR
-       ========================= */
 
     .spot-card {
       background: rgba(255,255,255,.94);
-
       border-radius: 23px;
-
       padding: 14px;
-
       margin-bottom: 16px;
-
-      box-shadow:
-        0 10px 30px
-        rgba(30,70,100,.08);
+      box-shadow: 0 10px 30px rgba(30,70,100,.08);
     }
 
     .spot-top {
@@ -185,281 +119,278 @@
     .spot-icon {
       width: 44px;
       height: 44px;
-
       flex: 0 0 44px;
-
       border-radius: 14px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
-      background:
-        linear-gradient(
-          145deg,
-          #eaf7ff,
-          #d9efff
-        );
-
+      background: linear-gradient(145deg, #eaf7ff, #d9efff);
       font-size: 21px;
     }
 
     .select-wrap {
       position: relative;
       flex: 1;
-
       min-width: 0;
     }
 
     .spot-label {
       margin-bottom: 4px;
-
       font-size: 11px;
-
       color: #8494a5;
     }
 
     select {
       width: 100%;
-
       padding: 0 25px 0 0;
-
       border: 0;
       outline: 0;
-
       appearance: none;
       -webkit-appearance: none;
-
       background: transparent;
-
       color: #142b42;
-
       font-family: inherit;
-
       font-size: 16px;
       font-weight: 800;
-
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .select-arrow {
       position: absolute;
-
       right: 2px;
       bottom: 1px;
-
       color: #7b8d9f;
-
       font-size: 18px;
-
       pointer-events: none;
     }
-
-    /* =========================
-       FORECAST HEADER
-       ========================= */
 
     .section-title {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      margin:
-        20px
-        2px
-        12px;
+      margin: 20px 2px 12px;
     }
 
     .section-title h2 {
       margin: 0;
-
       font-size: 21px;
       font-weight: 850;
     }
 
     .section-title span {
       padding: 6px 9px;
-
       border-radius: 10px;
-
       background: rgba(255,255,255,.72);
-
       color: #7d8fa0;
-
       font-size: 10px;
       font-weight: 700;
     }
 
-    /* =========================
-       FORECAST CONTAINER
-       ========================= */
-
     .forecast-wrapper {
-      position: relative;
-
       width: 100%;
-
       background: white;
-
       border-radius: 24px;
-
       overflow: hidden;
-
-      box-shadow:
-        0 12px 32px
-        rgba(30,70,100,.10);
+      box-shadow: 0 12px 32px rgba(30,70,100,.10);
     }
 
-    .forecast {
+    .forecast-card {
+      padding: 10px 0 12px;
+    }
+
+    .forecast-status {
+      padding: 5px 14px 9px;
+      color: #8292a2;
+      font-size: 11px;
+    }
+
+    .forecast-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .forecast-scroll::-webkit-scrollbar {
       display: none;
-
-      width: 100%;
-
-      min-height: 300px;
-
-      background: white;
     }
 
-    .forecast.active {
-      display: block;
+    .forecast-grid {
+      display: grid;
+      grid-template-columns: 72px repeat(12, 68px);
+      min-width: 888px;
+      font-size: 12px;
     }
 
-    /* =========================
-       OPEN FORECAST BUTTON
-       ========================= */
+    .row-label {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      background: #fff;
+      color: #8292a2;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .cell {
+      min-height: 39px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid #edf2f6;
+      color: #20384f;
+    }
+
+    .time-row .cell {
+      min-height: 32px;
+      color: #7c8fa1;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .wind-dir {
+      min-height: 35px;
+      font-size: 22px;
+      line-height: 1;
+      color: #3f586d;
+    }
+
+    .wind-speed {
+      font-size: 17px;
+      font-weight: 850;
+    }
+
+    .gust {
+      font-size: 14px;
+      font-weight: 800;
+      color: #e5535b;
+    }
+
+    .temp {
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .cloud {
+      color: #70859a;
+      font-weight: 750;
+    }
+
+    .rain {
+      color: #4f83b2;
+      font-weight: 750;
+    }
+
+    .section-divider {
+      grid-column: 1 / -1;
+      height: 8px;
+      background: #f5f8fa;
+      border-top: 1px solid #edf2f6;
+      border-bottom: 1px solid #edf2f6;
+    }
+
+    .swell-title {
+      grid-column: 1 / -1;
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      background: #fbfcfd;
+      color: #63798d;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .2px;
+    }
+
+    .swell-dir {
+      color: #47718d;
+      font-size: 19px;
+    }
+
+    .swell-height {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .swell-period {
+      font-size: 11px;
+      color: #7a8da0;
+    }
 
     .open-button {
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 100%;
-
       min-height: 50px;
-
       margin-top: 14px;
-
       border-radius: 16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #087cf5,
-          #0067dc
-        );
-
+      background: linear-gradient(135deg, #087cf5, #0067dc);
       color: white;
-
       text-decoration: none;
-
       font-size: 14px;
       font-weight: 800;
-
-      box-shadow:
-        0 9px 22px
-        rgba(8,124,245,.22);
+      box-shadow: 0 9px 22px rgba(8,124,245,.22);
     }
 
     .open-button:active {
       transform: scale(.98);
     }
 
-    /* =========================
-       INFO
-       ========================= */
-
     .info-card {
       margin-top: 16px;
-
       padding: 17px;
-
       border-radius: 21px;
-
-      background:
-        rgba(255,255,255,.78);
-
-      box-shadow:
-        0 8px 25px
-        rgba(30,70,100,.06);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 8px 25px rgba(30,70,100,.06);
     }
 
     .info-title {
       margin-bottom: 6px;
-
       font-size: 14px;
       font-weight: 800;
     }
 
     .info-text {
       color: #718397;
-
       font-size: 12px;
-
       line-height: 1.5;
     }
 
-    /* =========================
-       BOTTOM NAV
-       ========================= */
-
     .bottom-nav {
       position: fixed;
-
       left: 50%;
       bottom: calc(9px + env(safe-area-inset-bottom));
-
       transform: translateX(-50%);
-
       width: calc(100% - 28px);
       max-width: 590px;
-
       height: 66px;
-
       padding: 4px;
-
       display: flex;
       align-items: center;
       justify-content: space-around;
-
       z-index: 100;
-
-      border:
-        1px solid
-        rgba(220,230,238,.9);
-
+      border: 1px solid rgba(220,230,238,.9);
       border-radius: 23px;
-
-      background:
-        rgba(255,255,255,.92);
-
+      background: rgba(255,255,255,.92);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-
-      box-shadow:
-        0 12px 35px
-        rgba(25,55,80,.16);
+      box-shadow: 0 12px 35px rgba(25,55,80,.16);
     }
 
     .nav-item {
       width: 33.333%;
-
       height: 58px;
-
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
       gap: 3px;
-
       border-radius: 18px;
-
       text-decoration: none;
-
       color: #8494a5;
-
       font-size: 10px;
       font-weight: 750;
     }
@@ -471,17 +402,10 @@
 
     .nav-item.active {
       color: #087cf5;
-
-      background:
-        rgba(8,124,245,.08);
+      background: rgba(8,124,245,.08);
     }
 
-    /* =========================
-       SMALL IPHONE
-       ========================= */
-
     @media (max-width: 380px) {
-
       .app {
         padding-left: 10px;
         padding-right: 10px;
@@ -499,60 +423,40 @@
         font-size: 19px;
       }
 
+      .forecast-grid {
+        grid-template-columns: 68px repeat(12, 64px);
+        min-width: 836px;
+      }
     }
-
   </style>
 </head>
-
 
 <body>
 
   <main class="app">
 
-    <!-- HEADER -->
-
     <header class="header">
-
       <div class="brand">
-
-        <div class="logo">
-          🌬️
-        </div>
+        <div class="logo">🌬️</div>
 
         <div>
-
-          <div class="brand-title">
-            Wind Alert
-          </div>
-
-          <div class="brand-subtitle">
-            Ветер и погода
-          </div>
-
+          <div class="brand-title">Wind Alert</div>
+          <div class="brand-subtitle">Ветер и погода</div>
         </div>
-
       </div>
 
       <div class="live">
-
         <span class="live-dot"></span>
-
         LIVE
-
       </div>
-
     </header>
 
-
-    <!-- SPOT -->
 
     <section class="spot-card">
 
       <div class="spot-top">
 
-        <div class="spot-icon">
-          🌊
-        </div>
+        <div class="spot-icon">🌊</div>
 
         <div class="select-wrap">
 
@@ -595,119 +499,44 @@
     </section>
 
 
-    <!-- FORECAST TITLE -->
-
     <div class="section-title">
 
       <h2>
         Прогноз
       </h2>
 
-      <span>
-        Windy.app
+      <span id="modelLabel">
+        GFS · 3ч
       </span>
 
     </div>
 
 
-    <!-- FORECAST -->
-
     <section class="forecast-wrapper">
 
-
-      <!-- ЩЁЛКИНО -->
-
-      <div
-        id="forecast-206895"
-        class="forecast active"
-      >
+      <div class="forecast-card">
 
         <div
-          data-windywidget="forecast"
-          data-thememode="white"
-          data-responsive="true"
-          data-spotid="206895"
-          data-appid="f703bd89da5575c8eed6c88aa5faed08">
+          class="forecast-status"
+          id="forecastStatus"
+        >
+          Загружаем прогноз…
         </div>
 
-      </div>
 
+        <div class="forecast-scroll">
 
-      <!-- ОЛЕНЕВКА -->
+          <div
+            class="forecast-grid"
+            id="forecastGrid"
+          ></div>
 
-      <div
-        id="forecast-8746"
-        class="forecast"
-      >
-
-        <div
-          data-windywidget="forecast"
-          data-thememode="white"
-          data-responsive="true"
-          data-spotid="8746"
-          data-appid="f703bd89da5575c8eed6c88aa5faed08">
-        </div>
-
-      </div>
-
-
-      <!-- ДОНУЗЛАВ -->
-
-      <div
-        id="forecast-5329437"
-        class="forecast"
-      >
-
-        <div
-          data-windywidget="forecast"
-          data-thememode="white"
-          data-responsive="true"
-          data-spotid="5329437"
-          data-appid="f703bd89da5575c8eed6c88aa5faed08">
-        </div>
-
-      </div>
-
-
-      <!-- МЕЖВОДНОЕ -->
-
-      <div
-        id="forecast-379119"
-        class="forecast"
-      >
-
-        <div
-          data-windywidget="forecast"
-          data-thememode="white"
-          data-responsive="true"
-          data-spotid="379119"
-          data-appid="f703bd89da5575c8eed6c88aa5faed08">
-        </div>
-
-      </div>
-
-
-      <!-- СЕВАСТОПОЛЬ -->
-
-      <div
-        id="forecast-561722"
-        class="forecast"
-      >
-
-        <div
-          data-windywidget="forecast"
-          data-thememode="white"
-          data-responsive="true"
-          data-spotid="561722"
-          data-appid="f703bd89da5575c8eed6c88aa5faed08">
         </div>
 
       </div>
 
     </section>
 
-
-    <!-- OPEN FULL FORECAST -->
 
     <a
       id="openForecast"
@@ -720,8 +549,6 @@
     </a>
 
 
-    <!-- INFO -->
-
     <section class="info-card">
 
       <div class="info-title">
@@ -729,8 +556,9 @@
       </div>
 
       <div class="info-text">
-        Быстрый просмотр прогноза ветра
-        для выбранного спота.
+        Компактный прогноз для водных и ветровых спотов.
+        Горизонтально прокручивайте таблицу,
+        чтобы посмотреть следующие часы.
       </div>
 
     </section>
@@ -738,200 +566,628 @@
   </main>
 
 
-  <!-- BOTTOM NAV -->
-
   <nav class="bottom-nav">
 
-    <a
-      href="#"
-      class="nav-item active"
-    >
-
-      <span class="nav-icon">
-        🌊
-      </span>
-
-      <span>
-        Споты
-      </span>
-
+    <a href="#" class="nav-item active">
+      <span class="nav-icon">🌊</span>
+      <span>Споты</span>
     </a>
 
-
-    <a
-      href="#"
-      class="nav-item"
-    >
-
-      <span class="nav-icon">
-        💨
-      </span>
-
-      <span>
-        Ветер
-      </span>
-
+    <a href="#" class="nav-item">
+      <span class="nav-icon">💨</span>
+      <span>Ветер</span>
     </a>
 
-
-    <a
-      href="#"
-      class="nav-item"
-    >
-
-      <span class="nav-icon">
-        📅
-      </span>
-
-      <span>
-        Прогноз
-      </span>
-
+    <a href="#" class="nav-item">
+      <span class="nav-icon">📅</span>
+      <span>Прогноз</span>
     </a>
 
   </nav>
 
-
-  <!-- WINDY.APP FORECAST SCRIPT -->
-
-  <script
-    async
-    type="text/javascript"
-    src="https://windy.app/widgets-code/forecast/windy_forecast_async.js">
-  </script>
-
-
-  <!-- PWA SERVICE WORKER -->
-
-  <script>
-
-    if ("serviceWorker" in navigator) {
-
-      window.addEventListener(
-        "load",
-        function () {
-
-          navigator.serviceWorker
-            .register("./sw.js")
-            .then(function () {
-
-              console.log(
-                "Wind Alert: Service Worker OK"
-              );
-
-            })
-            .catch(function (error) {
-
-              console.log(
-                "Wind Alert: Service Worker error",
-                error
-              );
-
-            });
-
-        }
-      );
-
-    }
-
-  </script>
-
-
-  <!-- SPOT SWITCHING -->
 
   <script>
 
     const spots = {
 
       "206895": {
-        name:
-          "Щёлкино · Татарка · Казантип",
-
-        url:
-          "https://windy.app/forecast2/spot/206895/"
+        name: "Щёлкино · Татарка · Казантип",
+        lat: 45.4426,
+        lon: 35.8475,
+        url: "https://windy.app/forecast2/spot/206895/"
       },
 
       "8746": {
-        name:
-          "Оленевка",
-
-        url:
-          "https://windy.app/forecast2/spot/8746/"
+        name: "Оленевка",
+        lat: 45.3808,
+        lon: 32.5100,
+        url: "https://windy.app/forecast2/spot/8746/"
       },
 
       "5329437": {
-        name:
-          "Донузлав",
-
-        url:
-          "https://windy.app/forecast2/spot/5329437/"
+        name: "Донузлав",
+        lat: 45.4242,
+        lon: 33.1601,
+        url: "https://windy.app/forecast2/spot/5329437/"
       },
 
       "379119": {
-        name:
-          "Межводное · Kitepleasure",
-
-        url:
-          "https://windy.app/forecast2/spot/379119/"
+        name: "Межводное · Kitepleasure",
+        lat: 45.5571,
+        lon: 32.8314,
+        url: "https://windy.app/forecast2/spot/379119/"
       },
 
       "561722": {
-        name:
-          "Севастополь",
-
-        url:
-          "https://windy.app/forecast2/spot/561722/"
+        name: "Севастополь",
+        lat: 44.6204,
+        lon: 33.5123,
+        url: "https://windy.app/forecast2/spot/561722/"
       }
 
     };
 
 
     const select =
-      document.getElementById(
-        "spotSelect"
-      );
+      document.getElementById("spotSelect");
 
+    const grid =
+      document.getElementById("forecastGrid");
+
+    const status =
+      document.getElementById("forecastStatus");
 
     const openForecast =
-      document.getElementById(
-        "openForecast"
+      document.getElementById("openForecast");
+
+
+    function fmt(value, digits = 0) {
+
+      if (
+        value == null ||
+        Number.isNaN(Number(value))
+      ) {
+        return "—";
+      }
+
+      return Number(value).toFixed(digits);
+
+    }
+
+
+    function windArrow(deg) {
+
+      if (
+        deg == null ||
+        Number.isNaN(Number(deg))
+      ) {
+        return "—";
+      }
+
+      return `
+        <span
+          style="
+            display:inline-block;
+            transform:rotate(${Number(deg) + 180}deg)
+          "
+        >↓</span>
+      `;
+
+    }
+
+
+    function mm(value) {
+
+      if (
+        value == null ||
+        Number.isNaN(Number(value))
+      ) {
+        return "—";
+      }
+
+      const n = Number(value);
+
+      if (n < 0.05) {
+        return "—";
+      }
+
+      return n.toFixed(1);
+
+    }
+
+
+    function cloudIcon(value) {
+
+      if (
+        value == null ||
+        Number.isNaN(Number(value))
+      ) {
+        return "—";
+      }
+
+      const n = Number(value);
+
+      if (n < 15) {
+        return "☀";
+      }
+
+      if (n < 50) {
+        return "⛅";
+      }
+
+      return "☁";
+
+    }
+
+
+    function rowLabel(text) {
+
+      return `
+        <div class="row-label">
+          ${text}
+        </div>
+      `;
+
+    }
+
+
+    function cell(content, cls = "") {
+
+      return `
+        <div class="cell ${cls}">
+          ${content}
+        </div>
+      `;
+
+    }
+
+
+    function addRow(parts) {
+
+      grid.insertAdjacentHTML(
+        "beforeend",
+        parts.join("")
       );
 
+    }
 
-    function showSpot(spotId) {
 
-      document
-        .querySelectorAll(".forecast")
-        .forEach(
-          function (forecast) {
+    function renderForecast(data) {
 
-            forecast.classList.remove(
-              "active"
-            );
+      const h =
+        data.hourly;
 
+      const times =
+        h.time;
+
+
+      let indexes = [];
+
+      const now =
+        Date.now();
+
+
+      for (
+        let i = 0;
+        i < times.length;
+        i++
+      ) {
+
+        const t =
+          new Date(times[i]).getTime();
+
+        if (
+          t >= now -
+          60 * 60 * 1000
+        ) {
+
+          indexes.push(i);
+
+          if (
+            indexes.length >= 12
+          ) {
+            break;
           }
-        );
 
-
-      const selected =
-        document.getElementById(
-          "forecast-" + spotId
-        );
-
-
-      if (selected) {
-
-        selected.classList.add(
-          "active"
-        );
+        }
 
       }
 
 
-      if (spots[spotId]) {
+      if (!indexes.length) {
 
-        openForecast.href =
-          spots[spotId].url;
+        indexes =
+          Array.from(
+            { length: 12 },
+            (_, i) => i
+          );
+
+      }
+
+
+      const first =
+        indexes[0];
+
+
+      indexes =
+        indexes
+          .filter(
+            (idx, n) =>
+              n === 0 ||
+              Math.round(
+                idx - first
+              ) % 3 === 0
+          )
+          .slice(0, 12);
+
+
+      grid.innerHTML = "";
+
+
+      addRow([
+
+        rowLabel("время"),
+
+        ...indexes.map(
+          i =>
+            cell(
+              new Date(
+                times[i]
+              ).toLocaleTimeString(
+                "ru-RU",
+                {
+                  hour: "2-digit",
+                  minute: "2-digit"
+                }
+              ),
+              "time-row"
+            )
+        )
+
+      ]);
+
+
+      addRow([
+
+        rowLabel("ветер"),
+
+        ...indexes.map(
+          i =>
+            cell(
+              windArrow(
+                h.wind_direction_10m[i]
+              ),
+              "wind-dir"
+            )
+        )
+
+      ]);
+
+
+      addRow([
+
+        rowLabel("м/с"),
+
+        ...indexes.map(
+          i =>
+            cell(
+              fmt(
+                h.wind_speed_10m[i],
+                1
+              ),
+              "wind-speed"
+            )
+        )
+
+      ]);
+
+
+      addRow([
+
+        rowLabel("порывы"),
+
+        ...indexes.map(
+          i =>
+            cell(
+              fmt(
+                h.wind_gusts_10m[i],
+                1
+              ),
+              "gust"
+            )
+        )
+
+      ]);
+
+
+      addRow([
+
+        rowLabel("°C"),
+
+        ...indexes.map(
+          i =>
+            cell(
+              fmt(
+                h.temperature_2m[i],
+                0
+              ),
+              "temp"
+            )
+        )
+
+      ]);
+
+
+      addRow([
+
+        rowLabel("облачно"),
+
+        ...indexes.map(
+          i =>
+            cell(
+              `${cloudIcon(
+                h.cloud_cover[i]
+              )} ${fmt(
+                h.cloud_cover[i],
+                0
+              )}%`,
+              "cloud"
+            )
+        )
+
+      ]);
+
+
+      addRow([
+
+        rowLabel("осадки"),
+
+        ...indexes.map(
+          i =>
+            cell(
+              mm(
+                h.precipitation[i]
+              ) === "—"
+                ? "—"
+                : `${mm(
+                    h.precipitation[i]
+                  )} мм`,
+              "rain"
+            )
+        )
+
+      ]);
+
+
+      grid.insertAdjacentHTML(
+
+        "beforeend",
+
+        `
+          <div class="section-divider"></div>
+
+          <div class="swell-title">
+            🌊 SWELL · направление · высота · период
+          </div>
+        `
+
+      );
+
+
+      addRow([
+
+        rowLabel("swell"),
+
+        ...indexes.map(
+          i =>
+            cell(
+              windArrow(
+                h.swell_wave_direction[i]
+              ),
+              "swell-dir"
+            )
+        )
+
+      ]);
+
+
+      addRow([
+
+        rowLabel("высота"),
+
+        ...indexes.map(
+          i => {
+
+            const v =
+              h.swell_wave_height[i];
+
+            return cell(
+              v == null
+                ? "—"
+                : `${fmt(v, 1)} м`,
+              "swell-height"
+            );
+
+          }
+        )
+
+      ]);
+
+
+      addRow([
+
+        rowLabel("период"),
+
+        ...indexes.map(
+          i => {
+
+            const v =
+              h.swell_wave_period[i];
+
+            return cell(
+              v == null
+                ? "—"
+                : `${fmt(v, 0)} с`,
+              "swell-period"
+            );
+
+          }
+        )
+
+      ]);
+
+
+      const updated =
+        new Date().toLocaleTimeString(
+          "ru-RU",
+          {
+            hour: "2-digit",
+            minute: "2-digit"
+          }
+        );
+
+
+      status.textContent =
+        `Обновлено ${updated} · прогноз на 12 часов`;
+
+    }
+
+
+    async function loadForecast(
+      spotId
+    ) {
+
+      const spot =
+        spots[spotId];
+
+
+      status.textContent =
+        "Загружаем прогноз…";
+
+
+      grid.innerHTML = "";
+
+
+      openForecast.href =
+        spot.url;
+
+
+      const weatherUrl =
+
+        "https://api.open-meteo.com/v1/forecast" +
+
+        `?latitude=${spot.lat}` +
+
+        `&longitude=${spot.lon}` +
+
+        "&hourly=" +
+
+        "temperature_2m," +
+
+        "cloud_cover," +
+
+        "precipitation," +
+
+        "wind_speed_10m," +
+
+        "wind_gusts_10m," +
+
+        "wind_direction_10m" +
+
+        "&wind_speed_unit=ms" +
+
+        "&forecast_days=3" +
+
+        "&timezone=auto";
+
+
+      const marineUrl =
+
+        "https://marine-api.open-meteo.com/v1/marine" +
+
+        `?latitude=${spot.lat}` +
+
+        `&longitude=${spot.lon}` +
+
+        "&hourly=" +
+
+        "swell_wave_height," +
+
+        "swell_wave_direction," +
+
+        "swell_wave_period" +
+
+        "&forecast_days=3" +
+
+        "&timezone=auto";
+
+
+      try {
+
+        const [
+
+          weatherRes,
+          marineRes
+
+        ] = await Promise.all([
+
+          fetch(weatherUrl),
+
+          fetch(marineUrl)
+
+        ]);
+
+
+        if (
+          !weatherRes.ok ||
+          !marineRes.ok
+        ) {
+
+          throw new Error(
+            "Forecast request failed"
+          );
+
+        }
+
+
+        const weather =
+          await weatherRes.json();
+
+
+        const marine =
+          await marineRes.json();
+
+
+        weather.hourly
+          .swell_wave_height =
+          marine.hourly
+            .swell_wave_height;
+
+
+        weather.hourly
+          .swell_wave_direction =
+          marine.hourly
+            .swell_wave_direction;
+
+
+        weather.hourly
+          .swell_wave_period =
+          marine.hourly
+            .swell_wave_period;
+
+
+        renderForecast(
+          weather
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+
+        status.textContent =
+          "Не удалось загрузить прогноз. Попробуйте обновить страницу.";
 
       }
 
@@ -942,7 +1198,9 @@
       "change",
       function () {
 
-        showSpot(this.value);
+        loadForecast(
+          this.value
+        );
 
         window.scrollTo({
           top: 0,
@@ -953,7 +1211,35 @@
     );
 
 
-    showSpot("206895");
+    loadForecast("206895");
+
+
+    if (
+      "serviceWorker"
+      in navigator
+    ) {
+
+      window.addEventListener(
+        "load",
+        function () {
+
+          navigator.serviceWorker
+            .register("./sw.js")
+            .catch(
+              function (error) {
+
+                console.log(
+                  "Wind Alert: Service Worker error",
+                  error
+                );
+
+              }
+            );
+
+        }
+      );
+
+    }
 
   </script>
 
